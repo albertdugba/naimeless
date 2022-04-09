@@ -1,0 +1,17 @@
+name: Run lint
+on: push
+jobs:
+  run_lint-staged:
+    name: Run format
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Run Lint-Staged
+        uses: actions/checkout@v2
+        with:
+          format: yarn prettier --write .
+          lint: yarn eslint --fix
+          
+
+
+  
