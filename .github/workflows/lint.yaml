@@ -2,16 +2,20 @@ name: Lint files on push
 
 on: push
 jobs:
-  build:
+  eslint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Installing node_modules
-        run: npm install
+        run: yarn install
       - name: Running ESLint
         run: yarn run lint
       - name: Running Prettier
         run: yarn prettier --write .
+      - name: Set Github User
+        run: |
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
       - name: Adding fixes for committing
         run: git add .
       - name: Committing ESLint fixes
