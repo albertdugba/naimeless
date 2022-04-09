@@ -6,8 +6,4 @@ module.exports = {
     `yarn eslint --fix ${filenames.join(' ')}`,
     `yarn prettier --write ${filenames.join(' ')}`,
   ],
-
-  // Format MarkDown and JSON
-  '**/*.(md|json)': (filenames) =>
-    `yarn prettier --write ${filenames.join(' ')}`,
 }
