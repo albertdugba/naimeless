@@ -1,10 +1,9 @@
 name: Run Cypress Tests
 on: push
 jobs:
-  run_cypress:
+  run-cypress:
      name: Run Cypress
      runs-on: ubuntu-latest
-     timeout-minutes: 20
      steps:
        - name: Checkout
          uses: actions/checkout@v2
@@ -12,9 +11,6 @@ jobs:
        - name: Cypress run
          uses: cypress-io/github-action@v2
          with:
-           dev: yarn dev
-           config-file: cypress.json
+           build: yarn run build
+           start: yarn start
            wait-on: "http://localhost:3000"
-           wait-on-timeout: 300
-           browser: chrome
-           headless: true
