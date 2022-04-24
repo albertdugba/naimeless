@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <h1>Aview social app</h1>
+        <h3>Hello</h3>
       </div>
     </div>
   )
