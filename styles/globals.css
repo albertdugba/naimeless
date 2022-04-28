@@ -18,3 +18,8 @@ a {
 p {
   color: rgb(185, 119, 186);
 }
+
+.container {
+  max-width: 1256px;
+  margin: auto;
+}

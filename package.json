@@ -14,8 +14,10 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.0",
     "@prisma/client": "3.12.0",
     "cypress": "^9.5.4",
+    "framer-motion": "^6.3.2",
     "next": "12.1.4",
     "polished": "^4.2.2",
     "prettier": "^2.6.2",
