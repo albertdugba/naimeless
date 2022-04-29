@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { MainNavigation } from '../Header'
-import { MainContent } from '../Main'
+import { MainNavigation } from '../Nav'
+import { MainContent } from '../Container'
 import { SideNav } from '../Sidenav'
 
 export const MainLayout = () => {

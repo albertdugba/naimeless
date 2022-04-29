@@ -2,13 +2,13 @@ import { ComponentPropsWithoutRef, ElementType, forwardRef } from 'react'
 import { StyledInput, StyledInputContainer, StyledLabel } from './styled'
 
 export type TextFieldProps<T extends ElementType> = {
-  label: string
+  label?: string
   variant?: 'default' | 'outlined'
   validationError?: boolean
 } & ComponentPropsWithoutRef<T>
 
 export const TextField = forwardRef<HTMLInputElement, TextFieldProps<'input'>>(
-  ({ label, variant, validationError, ...props }, ref) => {
+  ({ label, variant, size, validationError, ...props }, ref) => {
     return (
       <StyledInputContainer>
         <StyledLabel
@@ -19,6 +19,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps<'input'>>(
           {label}
         </StyledLabel>
         <StyledInput
+          size={size}
           data-testid="input-field"
           label={label}
           variant={variant}

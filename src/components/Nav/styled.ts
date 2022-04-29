@@ -9,7 +9,7 @@ const StyledHeader = styled.header`
   right: 0;
   height: var(--header-height);
   background: ${colors.neutral[100]};
-  /* border: 1px solid ${colors.purple[200]}; */
+  border-bottom: 1px solid ${colors.neutral[300]};
 `
 
 const StyledHeaderInner = styled.div`
@@ -18,7 +18,8 @@ const StyledHeaderInner = styled.div`
   padding: 1.2rem;
   display: flex;
   align-items: center;
-  border: 1px solid ${colors.purple[200]};
+  justify-content: space-between;
+  /* border: 1px solid ${colors.purple[200]}; */
   /* justify-content: space-between; */
 `
 

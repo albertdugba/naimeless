@@ -4,7 +4,9 @@ import { colors, theme } from '../../../utils'
 
 export const StyledButton = styled.button<ButtonProps<'button'>>`
   cursor: pointer;
-  display: ${(props) => (props.fullWidth ? 'block' : 'inline-block')};
+  display: ${(props) => (props.fullWidth ? 'block' : 'inline-flex')};
+  align-items: center;
+  justify-content: center;
   text-align: center;
   user-select: none;
   font-family: inherit;
@@ -12,23 +14,23 @@ export const StyledButton = styled.button<ButtonProps<'button'>>`
     if (props.size === 'large') {
       return `0.7rem 1.2rem`
     } else if (props.size === 'medium') {
-      return `0.42rem 0.65rem`
+      return `0.4rem 0.8rem`
     } else if (props.size === 'small') {
-      return `0.25rem 0.45rem`
+      return `0.2rem 0.45rem`
     }
   }};
   border: ${(props) =>
     props.variant === 'secondary'
       ? `10px solid ${colors.purple[200]}`
       : '1px solid inherit'};
-  border-radius: 5px;
+  border-radius: 4px;
   min-width: ${(props) =>
     props.fullWidth
       ? '100%'
       : props.size === 'small'
       ? '60px'
       : props.size === 'medium'
-      ? '80px'
+      ? '90px'
       : props.size === 'large'
       ? '100px'
       : '80px'};

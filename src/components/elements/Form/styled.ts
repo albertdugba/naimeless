@@ -17,16 +17,11 @@ export const StyledInput = styled.input<TextFieldProps<'input'>>`
       : validationError
       ? `2px solid ${colors.red[100]}`
       : ''};
-  padding: 0.8rem 0.7rem;
+  padding: 0.4rem 0.5rem;
   border-radius: 5px;
   font-family: inherit;
   background-color: ${({ variant }) =>
     variant === 'default' ? `${colors.neutral[200]}` : colors.neutral[100]};
-
-  &:hover {
-    border: 2px solid ${colors.purple[100]};
-    transition: border 0.5s ease-in-out;
-  }
 `
 
 export const StyledLabel = styled.label<TextFieldProps<'label'>>`

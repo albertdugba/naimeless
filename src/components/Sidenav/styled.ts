@@ -3,14 +3,13 @@ import { colors, theme } from '../../utils'
 
 const StyledSidenav = styled.aside`
   grid-area: aside;
-  border-top: 1px solid ${colors.purple[200]};
-  border-left: 1px solid ${colors.purple[200]};
   height: 100vh;
   width: 100%;
   position: fixed;
-  top: 60px;
-  max-width: 14rem;
+  top: 80px;
+  max-width: 15rem;
   background: ${colors.neutral[100]};
+  padding: 1.2rem;
 `
 
 export { StyledSidenav }
