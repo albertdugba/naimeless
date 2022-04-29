@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('font.css');
 html,
 body {
@@ -23,3 +27,4 @@ p {
   max-width: 1256px;
   margin: auto;
 }
+

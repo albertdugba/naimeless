@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Container } from '../Container'
-import { MainNavigation } from '../Nav'
+import { MainNavigation } from '../Header'
+import { MainContent } from '../Main'
 import { SideNav } from '../Sidenav'
 
 export const MainLayout = () => {
@@ -8,18 +8,22 @@ export const MainLayout = () => {
     <StyledLayout>
       <MainNavigation />
       <SideNav />
-      <Container />
+      <MainContent />
     </StyledLayout>
   )
 }
 
 const StyledLayout = styled.section`
+  --header-height: 5rem;
   display: grid;
-  grid-template-columns: 300px 1fr 150px;
+  grid-template-columns: 14rem 2fr;
   grid-template-rows: 4rem 1fr 5rem;
   min-height: 100vh;
   grid-template-areas:
-    'header header header'
-    'aside main main'
-    'aside main main';
+    'header header'
+    'aside main'
+    'aside main';
+  max-width: 1150px;
+  margin: 0 auto;
+  gap: 1rem;
 `

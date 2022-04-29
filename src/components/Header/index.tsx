@@ -1,10 +1,11 @@
-import { Container } from './styled'
+import { StyledHeader, StyledHeaderInner } from './styled'
 
 export const MainNavigation = () => {
   return (
-    <Container>
-      <h1>main nav</h1>
-      {/* <ul>
+    <StyledHeader>
+      <StyledHeaderInner>
+        <h1>main nav</h1>
+        {/* <ul>
         <li>Home</li>
         <li>Nearby</li>
         <li>Community</li>
@@ -14,6 +15,7 @@ export const MainNavigation = () => {
         <li>Nearby</li>
         <li>Community</li>
       </ul> */}
-    </Container>
+      </StyledHeaderInner>
+    </StyledHeader>
   )
 }

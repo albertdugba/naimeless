@@ -1,5 +1,9 @@
 import { StyledSidenav } from './styled'
 
 export const SideNav = () => {
-  return <StyledSidenav>Sidenav</StyledSidenav>
+  return (
+    <StyledSidenav>
+      <h1>StyledInner</h1>
+    </StyledSidenav>
+  )
 }
