@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 @import url('font.css');
+@import url('variables.css');
 html,
 body {
   padding: 0;
   margin: 0;
+  background: rgb(247, 244, 248);
 }
 
 a {

@@ -9,7 +9,7 @@ const StyledHeader = styled.header`
   right: 0;
   height: var(--header-height);
   background: ${colors.neutral[100]};
-  border-bottom: 1px solid ${colors.neutral[300]};
+  border-bottom: 1px solid ${colors.neutral[200]};
 `
 
 const StyledHeaderInner = styled.div`

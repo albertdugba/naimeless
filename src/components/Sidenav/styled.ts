@@ -12,4 +12,22 @@ const StyledSidenav = styled.aside`
   padding: 1.2rem;
 `
 
-export { StyledSidenav }
+const StyledRightSidebar = styled.div`
+  grid-area: right-sidebar;
+  height: 50vh;
+  padding: 1.2rem;
+  position: sticky;
+  top: 80px;
+  right: 0;
+  max-width: 15rem;
+`
+
+const StyledRightInnner = styled.div`
+  margin-top: 0px;
+  box-shadow: 4px 9px -3px rgba(0, 0, 0, 0.3);
+  height: 100%;
+  width: 100%;
+  padding: 1.2rem;
+`
+
+export { StyledSidenav, StyledRightSidebar, StyledRightInnner }
