@@ -10,6 +10,7 @@ const StyledSidenav = styled.aside`
   max-width: 15rem;
   background: ${colors.neutral[100]};
   padding: 1.2rem;
+  border-right: 1px solid #f1f1f1f1;
 `
 
 const StyledRightSidebar = styled.div`

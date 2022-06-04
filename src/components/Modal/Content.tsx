@@ -9,7 +9,7 @@ export const Content: FunctionComponent<ModalContentProps> = ({ children }) => {
 }
 
 const ModalContent = styled.main`
-  background: #fff;
-  height: 80%;
-  height: var(--modalContent);
+  max-height: 60vh;
+  padding: 2.2rem;
+  overflow-y: scroll;
 `

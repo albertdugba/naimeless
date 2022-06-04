@@ -1,19 +1,25 @@
 import styled from 'styled-components'
 import { MainNavigation } from '../Nav'
-import { MainContent } from '../Container'
 import { SideNav } from '../Sidenav'
 import { RightSidebar } from '../Sidenav/RightSidebar'
+import { ReactElement, ReactNode } from 'react'
 
-export const MainLayout = () => {
+type LayoutProps = {
+  children: ReactNode
+}
+
+export const MainLayout = ({ children }: LayoutProps) => {
   return (
     <StyledLayout>
       <MainNavigation />
       <SideNav />
       <RightSidebar />
-      <MainContent />
+      <Layout>{children}</Layout>
     </StyledLayout>
   )
 }
+
+export const getLayout = (page: ReactElement) => <MainLayout>{page}</MainLayout>
 
 const StyledLayout = styled.section`
   --header-height: 5rem;
@@ -28,4 +34,11 @@ const StyledLayout = styled.section`
   max-width: 1150px;
   margin: 0 auto;
   gap: 1rem;
+`
+
+const Layout = styled.div`
+  grid-area: main;
+  min-height: 100%;
+  width: 100%;
+  padding: 0;
 `

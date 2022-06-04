@@ -4,11 +4,23 @@
 
 @import url('font.css');
 @import url('variables.css');
+
+:root {
+  --br: 16;
+  --x: 0;
+  --y: 4;
+  --blur: 1;
+  --spread: 0;
+  --shadow1: #eee;
+  --shadow2: #4444440d;
+  --shadow3: #42474c59;
+  --size: 20rem;
+}
 html,
 body {
   padding: 0;
   margin: 0;
-  background: rgb(247, 244, 248);
+  background: rgb(250, 249, 250);
 }
 
 a {
@@ -19,10 +31,6 @@ a {
 * {
   box-sizing: border-box;
   font-family: 'Euclid Circular A' !important;
-}
-
-p {
-  color: rgb(185, 119, 186);
 }
 
 .container {

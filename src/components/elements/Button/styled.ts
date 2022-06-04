@@ -14,7 +14,7 @@ export const StyledButton = styled.button<ButtonProps<'button'>>`
     if (props.size === 'large') {
       return `0.7rem 1.2rem`
     } else if (props.size === 'medium') {
-      return `0.4rem 0.8rem`
+      return `0.4rem 0.5rem`
     } else if (props.size === 'small') {
       return `0.2rem 0.45rem`
     }

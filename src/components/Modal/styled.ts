@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { colors } from '../../utils'
 
 const StyledModalContainer = styled.div`
   border-radius: 8px;
@@ -11,16 +10,14 @@ const StyledModalContainer = styled.div`
 
 const StyledModalInner = styled.div`
   position: fixed;
-  top: 20%;
+  top: 12%;
   left: 0;
   right: 0;
   width: 100%;
-  height: 100vh;
   z-index: 999;
-  background: ${colors.green[200]};
-  max-width: 400px;
+  /* min-width: 30px; */
+  height: 100%;
   margin: auto;
-  max-height: 50%;
   border-radius: 9px;
   overflow-y: scroll;
 `

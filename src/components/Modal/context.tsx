@@ -44,14 +44,6 @@ export const Modal: FC<ModalProps> & ModalComposition = ({
   )
 }
 
-export const useModal = (): ModalContextProps => {
-  const context = useContext(ModalContext)
-  if (!context) {
-    throw new Error('This component must be used within a <Modal> Provider')
-  }
-  return context
-}
-
 Modal.Header = Header
 Modal.Content = Content
 Modal.Footer = Footer

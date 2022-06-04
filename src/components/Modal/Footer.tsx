@@ -1,5 +1,6 @@
 import { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components'
+import { colors } from '../../utils'
 
 export interface ModalFooterProps {
   children: ReactNode
@@ -10,5 +11,5 @@ export const Footer: FunctionComponent<ModalFooterProps> = ({ children }) => {
 
 const ModalFooter = styled.div`
   height: var(--modalFooter);
-  background: green;
+  padding: 1rem;
 `

@@ -1,4 +1,7 @@
 import { FunctionComponent } from 'react'
+import styled from 'styled-components'
+import { Button } from '../elements/Button'
+import { TextField } from '../elements/Form'
 import { Modal } from './context'
 
 interface ModalProps {
@@ -12,9 +15,32 @@ export const MyModal: FunctionComponent<ModalProps> = ({
 }) => {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <Modal.Header onClose={setIsOpen}>Modal Header</Modal.Header>
-      <Modal.Content>Modal Content</Modal.Content>
-      <Modal.Footer>Modal Footer</Modal.Footer>
+      <M>
+        <Modal.Header onClose={setIsOpen}>
+          <div>Modal Header</div>
+        </Modal.Header>
+        <Modal.Content>
+          <div className="mb-4">
+            <TextField label="Email" />
+          </div>
+          <TextField label="Password" />
+          <div style={{ marginTop: '20px' }}>
+            <Button variant="success">Sign in</Button>
+          </div>
+        </Modal.Content>
+        <Modal.Footer>
+          <div className="text-center">
+            <p>Dont have an account ? Signin</p>
+          </div>
+        </Modal.Footer>
+      </M>
     </Modal>
   )
 }
+
+const M = styled.div`
+  max-width: 476px;
+  margin: auto;
+  border-radius: 8px;
+  background: #fff;
+`

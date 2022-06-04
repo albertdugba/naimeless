@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "baseUrl": "/",
+    "paths": {
+      "@/*": ["src/components/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@icons/*":["public/icons/*"]
+    },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["cypress"],
@@ -17,6 +23,13 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+     "**/*.ts",
+     "**/*.tsx",
+     "pages/**/*",
+ "components/**/*",
+ "next.config.js" 
+],
   "exclude": ["node_modules"]
 }
