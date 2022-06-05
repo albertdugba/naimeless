@@ -11,8 +11,11 @@
     "cypress:open": "cypress open",
     "cy:run": "cypress run",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'",
+    "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' -r tsconfig-paths/register"
   },
+ 
   "dependencies": {
     "@headlessui/react": "^1.6.0",
     "@prisma/client": "3.12.0",
@@ -27,8 +30,12 @@
     "react-gravatar": "^2.6.3",
     "styled-components": "^5.3.5"
   },
+   "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "devDependencies": {
     "@babel/core": "^7.17.9",
+    "@faker-js/faker": "^7.1.0",
     "@storybook/addon-actions": "^6.4.22",
     "@storybook/addon-essentials": "^6.4.22",
     "@storybook/addon-interactions": "^6.4.22",
