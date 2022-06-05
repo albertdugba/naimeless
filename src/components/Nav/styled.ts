@@ -9,18 +9,19 @@ const StyledHeader = styled.header`
   right: 0;
   height: var(--header-height);
   background: ${colors.neutral[100]};
+  background: #ffff;
+  height: 3.5rem;
+  z-index: 9999999;
   border-bottom: 1px solid ${colors.neutral[200]};
 `
 
 const StyledHeaderInner = styled.div`
-  max-width: 1150px;
-  margin: auto;
-  padding: 1.2rem;
+  max-width: 1000px;
+  margin: 10px auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* border: 1px solid ${colors.purple[200]}; */
-  /* justify-content: space-between; */
+  background: #fff;
 `
 
 export { StyledHeader, StyledHeaderInner }

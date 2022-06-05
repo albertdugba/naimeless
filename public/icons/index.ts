@@ -1,2 +1,6 @@
 export { default as Times } from './times'
 export { default as MoreHori } from './horizontal-vert'
+export { default as Comment } from './comment'
+export { default as Share } from './share'
+export { default as ChevronDown } from './chevron-down'
+export { default as ChevronUp } from './chevron-up'

@@ -7,9 +7,9 @@ export const MainNavigation = () => {
     <StyledHeader>
       <StyledHeaderInner>
         <h1>Logo</h1>
-        <div>
+        {/* <div>
           <TextField placeholder="Search" />
-        </div>
+        </div> */}
 
         <Button variant="primary" size="medium">
           Log In

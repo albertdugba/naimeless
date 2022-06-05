@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { MainNavigation } from '../Nav'
 import { SideNav } from '../Sidenav'
-import { RightSidebar } from '../Sidenav/RightSidebar'
 import { ReactElement, ReactNode } from 'react'
 
 type LayoutProps = {
@@ -13,7 +12,6 @@ export const MainLayout = ({ children }: LayoutProps) => {
     <StyledLayout>
       <MainNavigation />
       <SideNav />
-      <RightSidebar />
       <Layout>{children}</Layout>
     </StyledLayout>
   )
@@ -22,23 +20,36 @@ export const MainLayout = ({ children }: LayoutProps) => {
 export const getLayout = (page: ReactElement) => <MainLayout>{page}</MainLayout>
 
 const StyledLayout = styled.section`
-  --header-height: 5rem;
+  --header-height: 3.5rem;
   display: grid;
-  grid-template-columns: 14rem 2fr 14rem;
-  grid-template-rows: 4rem 1fr 5rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2rem 1fr;
   min-height: 100vh;
   grid-template-areas:
     'header header header'
-    'aside main right-sidebar'
-    'aside main right-sidebar';
-  max-width: 1150px;
+    'aside main main'
+    'aside main main';
+  max-width: 1000px;
   margin: 0 auto;
-  gap: 1rem;
+  padding: 1rem;
+
+  @media (min-width: 701px) {
+    grid-template-columns: 20rem;
+    grid-template-rows: 2rem 1fr;
+    min-height: 100vh;
+    grid-template-areas:
+      'header header header'
+      'aside main main'
+      'aside main main';
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
 `
 
 const Layout = styled.div`
   grid-area: main;
   min-height: 100%;
   width: 100%;
-  padding: 0;
+  margin: 20px auto;
 `
