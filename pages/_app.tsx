@@ -5,6 +5,9 @@ import { theme } from '../src/utils'
 import { ReactElement, ReactNode } from 'react'
 import { NextPage } from 'next'
 import { MainLayout } from '../src/components/layout'
+import { QueryClientProvider, QueryClient } from 'react-query'
+
+const queryClient = new QueryClient()
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -17,11 +20,11 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout =
     Component.getLayout ?? ((page) => <MainLayout>{page}</MainLayout>)
   return getLayout(
-    <>
+    <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
-    </>
+    </QueryClientProvider>
   )
 }
 
