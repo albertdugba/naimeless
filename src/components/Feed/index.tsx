@@ -2,16 +2,19 @@ import { PostCard } from '../elements/Card'
 import { getLayout } from '../layout'
 import Gravatar from 'react-gravatar'
 import * as Icons from '../../../public/icons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Modal } from '../Modal/context'
 import { StyledModal } from './styled'
 import { Button } from '../elements/Button'
 import { MessageBox } from '../MessageBox'
 import axios from 'axios'
 import { useQuery } from 'react-query'
+import { useCreatePost } from '../../features/post/api/create-post'
 
 export const Feed = () => {
   const [openModal, setOpenModal] = useState(false)
+  const [input, setInput] = useState('')
+  const createPost = useCreatePost()
   const { data, isLoading, isSuccess } = useQuery<
     {
       message: string
@@ -21,7 +24,16 @@ export const Feed = () => {
     }[]
   >('posts', () => axios.get('/api/posts').then((res) => res.data))
 
-  console.log('data', data)
+  const handleAddPost = () => {
+    console.log('input', input)
+    createPost.mutate({ message: input, published: true, author: 'emily' })
+  }
+
+  useEffect(() => {
+    if (createPost.isSuccess || createPost.isError) {
+      setOpenModal(false)
+    }
+  }, [createPost.isError, createPost.isSuccess])
   return (
     <>
       <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
@@ -32,10 +44,17 @@ export const Feed = () => {
             </Modal.Header>
           </div>
           <Modal.Content>
-            <MessageBox />
+            <form onSubmit={(e) => e.preventDefault()}>
+              <MessageBox
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </form>
           </Modal.Content>
           <Modal.Footer>
-            <Button fullWidth>Post</Button>
+            <Button onClick={handleAddPost} fullWidth>
+              {createPost.isLoading ? 'Sumitting post' : 'Post'}
+            </Button>
           </Modal.Footer>
         </StyledModal>
       </Modal>
@@ -56,7 +75,7 @@ export const Feed = () => {
         ? 'loading'
         : isSuccess &&
           data.map((post) => (
-            <div key={post.id} className="mt-3">
+            <div key={post.id} className="my-3">
               <PostCard>
                 <div className="flex gap-3 w-full">
                   <Gravatar

@@ -9,7 +9,9 @@ type Data = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   async function main() {
-    const posts = await prisma.post.findMany()
+    const posts = await prisma.post.findMany({
+      orderBy: [{ createdAt: 'desc' }],
+    })
     return res.status(200).json(posts)
   }
 

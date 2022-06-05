@@ -10,7 +10,7 @@ const StyledSidenav = styled.aside`
   width: 20rem;
   background: ${colors.neutral[100]};
   padding: 1.2rem;
-  border-right: 1px solid #f1f1f1f1;
+  border-right: 1px solid ${colors.neutral[300]};
   display: none;
   @media (min-width: 701px) {
     display: block;

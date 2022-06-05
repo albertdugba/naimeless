@@ -1,5 +1,12 @@
+import { ChangeEvent, FunctionComponent } from 'react'
 import Gravartar from 'react-gravatar'
-export const MessageBox = () => {
+
+interface Props {
+  onChange: (e: ChangeEvent<HTMLTextAreaElement>) => void
+  value: string
+}
+
+export const MessageBox: FunctionComponent<Props> = ({ onChange, value }) => {
   return (
     <div>
       <Gravartar
@@ -7,6 +14,8 @@ export const MessageBox = () => {
         email="ama@duncan.com"
       />
       <textarea
+        onChange={onChange}
+        value={value}
         className="outline-none w-full p-4 rounded-[6px]"
         placeholder="Whats happening ?"
       />
