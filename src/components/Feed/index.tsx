@@ -2,10 +2,45 @@ import { PostCard } from '../elements/Card'
 import { getLayout } from '../layout'
 import Gravatar from 'react-gravatar'
 import * as Icons from '../../../public/icons'
+import { useState } from 'react'
+import { Modal } from '../Modal/context'
+import { TextField } from '../elements/Form'
+import { StyledModal } from './styled'
+import { Button } from '../elements/Button'
+import { MessageBox } from '../MessageBox'
 
 export const Feed = () => {
+  const [openModal, setOpenModal] = useState(false)
   return (
     <>
+      <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
+        <StyledModal>
+          <div className="border-b">
+            <Modal.Header onClose={() => setOpenModal(false)}>
+              Create Post
+            </Modal.Header>
+          </div>
+          <Modal.Content>
+            <MessageBox />
+          </Modal.Content>
+          <Modal.Footer>
+            <Button fullWidth>Post</Button>
+          </Modal.Footer>
+        </StyledModal>
+      </Modal>
+      <div className="flex items-center gap-4 bg-white p-6 rounded-[6px] border">
+        <Gravatar
+          email="discord.com"
+          className="w-[40px] h-[40px] rounded-full"
+        />
+        <input
+          type="text"
+          placeholder="Whats going on"
+          autoFocus={false}
+          onClick={() => setOpenModal(true)}
+          className="px-2 py-3 rounded-full w-full outline-none bg-gray-100 cursor-pointer"
+        />
+      </div>
       {new Array(10).fill(
         <div className="mt-3">
           <PostCard>

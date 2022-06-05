@@ -10,6 +10,6 @@ export const Content: FunctionComponent<ModalContentProps> = ({ children }) => {
 
 const ModalContent = styled.main`
   max-height: 60vh;
-  padding: 2.2rem;
+  padding: 1rem;
   overflow-y: scroll;
 `

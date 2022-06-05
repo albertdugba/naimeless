@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
   background: ${colors.neutral[100]};
   background: #ffff;
   height: 3.5rem;
-  z-index: 9999999;
+  z-index: 999;
   border-bottom: 1px solid ${colors.neutral[200]};
 `
 
