@@ -22,15 +22,15 @@ export const getLayout = (page: ReactElement) => <MainLayout>{page}</MainLayout>
 const StyledLayout = styled.section`
   --header-height: 3.5rem;
   display: grid;
-  grid-template-columns: 1fr;
+  /* grid-template-columns: 1fr; */
   grid-template-rows: 2rem 1fr;
   min-height: 100vh;
   grid-template-areas:
     'header header header'
     'aside main main'
     'aside main main';
-  max-width: 1000px;
-  margin: 0 auto;
+  width: 100%;
+  /* margin: 0 auto; */
   padding: 1rem;
 
   @media (min-width: 701px) {
