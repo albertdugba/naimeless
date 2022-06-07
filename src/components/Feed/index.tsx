@@ -9,33 +9,71 @@ import { Button } from '../elements/Button'
 import { MessageBox } from '../MessageBox'
 import axios from 'axios'
 import { useQuery } from 'react-query'
-import { useCreatePost } from '../../features/post/api/create-post'
+import {
+  useCreatePost,
+  useDeletePost,
+} from '../../features/post/api/react-query'
+import { Post } from '@prisma/client'
 
 export const Feed = () => {
   const [openModal, setOpenModal] = useState(false)
+  const [deletePostModal, setDeletePostModal] = useState(false)
+  const [selectPost, setSelectPost] = useState<Post>()
   const [input, setInput] = useState('')
   const createPost = useCreatePost()
-  const { data, isLoading, isSuccess } = useQuery<
-    {
-      message: string
-      id: string
-      createdAt: Date
-      author: string
-    }[]
-  >('posts', () => axios.get('/api/posts').then((res) => res.data))
+  const deletePost = useDeletePost()
+  const { data, isLoading, isSuccess } = useQuery<Post[]>('posts', () =>
+    axios.get('/api/posts').then((res) => res.data)
+  )
 
   const handleAddPost = () => {
-    console.log('input', input)
     createPost.mutate({ message: input, published: true, author: 'emily' })
+  }
+  const handleDeletePost = () => {
+    if (selectPost?.id) {
+      deletePost.mutate(selectPost?.id)
+    }
+  }
+
+  const handleDeleteModal = (post: Post) => {
+    setSelectPost(post)
+    setDeletePostModal(true)
   }
 
   useEffect(() => {
     if (createPost.isSuccess || createPost.isError) {
       setOpenModal(false)
     }
-  }, [createPost.isError, createPost.isSuccess])
+
+    if (deletePost.isSuccess || deletePost.isError) {
+      setDeletePostModal(false)
+    }
+  }, [
+    createPost.isError,
+    createPost.isSuccess,
+    deletePost.isError,
+    deletePost.isSuccess,
+  ])
   return (
     <>
+      <Modal
+        isOpen={deletePostModal}
+        setIsOpen={() => setDeletePostModal(false)}
+      >
+        <StyledModal>
+          <div className="border-b">
+            <Modal.Header onClose={() => setDeletePostModal(false)}>
+              Delete Post {selectPost?.id}
+            </Modal.Header>
+          </div>
+          <Modal.Content>Youre about to delele Post</Modal.Content>
+          <Modal.Footer>
+            <Button variant="danger" onClick={handleDeletePost} fullWidth>
+              {deletePost.isLoading ? 'Deleting post' : 'Delete'}
+            </Button>
+          </Modal.Footer>
+        </StyledModal>
+      </Modal>
       <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
         <StyledModal>
           <div className="border-b">
@@ -107,7 +145,9 @@ export const Feed = () => {
                         <Icons.Share />
                         <span className="text-[9px]">Share</span>
                       </div>
-                      <Icons.MoreHori />
+                      <button onClick={() => handleDeleteModal(post)}>
+                        <Icons.MoreHori />
+                      </button>
                     </div>
                   </div>
                   <div className="flex flex-col items-center justify-between h-full">

@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { useQuery, useMutation, useQueryClient } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
+import { deletePost } from '.'
 
 export const useCreatePost = () => {
   const queryClient = useQueryClient()
@@ -20,4 +21,16 @@ export const useCreatePost = () => {
       },
     }
   )
+}
+
+export const useDeletePost = () => {
+  const queryClient = useQueryClient()
+  return useMutation((id: string) => deletePost(id), {
+    onSuccess: () => {
+      queryClient.invalidateQueries('posts')
+    },
+    onError: () => {
+      console.log('Post deleted successfully')
+    },
+  })
 }
