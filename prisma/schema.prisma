@@ -9,11 +9,24 @@ datasource db {
 }
 
 model Post {
-  id        String   @id @default(cuid())
-  message   String
-  published Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
-  author    String
-  channel   String
+  id          Int      @id @default(autoincrement())
+  message     String
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt()
+  author      String
+  channelName String?
+  photos      Photo[]
+}
+
+model Photo {
+  id                 Int      @id @default(autoincrement())
+  url                String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt()
+  cloudinaryPublicId String
+  width              Int
+  height             Int
+  post               Post     @relation(fields: [postId], references: [id])
+  postId             Int
 }

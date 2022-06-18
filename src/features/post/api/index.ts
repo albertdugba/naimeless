@@ -41,7 +41,7 @@ export async function createPost(post: Prisma.PostCreateInput): Promise<Post> {
 
   return json()
 }
-export async function deletePost(id: string): Promise<Post> {
+export async function deletePost(id: number): Promise<Post> {
   const response = await fetch(`/api/posts/${id}/delete`, {
     method: 'DELETE',
     headers,

@@ -1,8 +1,8 @@
+import { useEffect, useState } from 'react'
 import { PostCard } from '../elements/Card'
 import { getLayout } from '../layout'
 import Gravatar from 'react-gravatar'
 import * as Icons from '../../../public/icons'
-import { useEffect, useState } from 'react'
 import { Modal } from '../Modal/context'
 import { StyledModal } from './styled'
 import { Button } from '../elements/Button'
@@ -13,22 +13,28 @@ import {
   useCreatePost,
   useDeletePost,
 } from '../../features/post/api/react-query'
-import { Post } from '@prisma/client'
+import { formatDistance } from 'date-fns'
+import Image from 'next/image'
+import { Post } from '../../features/post/interface/post'
 
 export const Feed = () => {
   const [openModal, setOpenModal] = useState(false)
   const [deletePostModal, setDeletePostModal] = useState(false)
   const [selectPost, setSelectPost] = useState<Post>()
   const [input, setInput] = useState('')
+
   const createPost = useCreatePost()
   const deletePost = useDeletePost()
-  const { data, isLoading, isSuccess } = useQuery<Post[]>('posts', () =>
+
+  const { data, isLoading, isSuccess } = useQuery<Post[], Error>('posts', () =>
     axios.get('/api/posts').then((res) => res.data)
   )
 
+  console.log('feed', data)
   const handleAddPost = () => {
-    createPost.mutate({ message: input, published: true, author: 'emily' })
+    createPost.mutate({ message: input, published: true, author: 'nbvbn' })
   }
+
   const handleDeletePost = () => {
     if (selectPost?.id) {
       deletePost.mutate(selectPost?.id)
@@ -115,49 +121,70 @@ export const Feed = () => {
           data.map((post) => (
             <div key={post.id} className="my-3">
               <PostCard>
-                <div className="flex gap-3 w-full">
-                  <Gravatar
-                    email={`${post.author?.toLowerCase()}@mail.com`}
-                    className="w-[35px] h-[35px] rounded-full"
-                  />
-
-                  <div className="w-full">
-                    <div className="flex items-center justify-between">
+                <div className="w-full">
+                  <div className="w-full flex gap-8 justify-between">
+                    <div className="flex flex-col w-full">
+                      {/* post header */}
                       <div className="flex items-center gap-2">
-                        <span className="text-[12px] text-gray-400">anon</span>
-                        <span className="text-[12px] text-gray-400">
-                          4hrs ago
+                        <div className="p-0">
+                          <span className="flex items-center justify-center text-[10px] text-blue-400 bg-blue-200 rounded-full px-[6px] py-[2px]">
+                            {`@${post.channelName}`}
+                          </span>
+                        </div>
+                        <span className="text-[9px] text-gray-400 inline-block">
+                          {formatDistance(
+                            new Date(post.createdAt),
+                            new Date(),
+                            { addSuffix: true }
+                          )}
                         </span>
                       </div>
+
+                      {/* message body */}
+                      <div className="text-[11px] py-1 mt-2">
+                        <p className="mb-1">{post.message}</p>
+                        <div className="w-full">
+                          {post.photos?.length
+                            ? post?.photos?.map((photo) => (
+                                <img
+                                  key={photo.id}
+                                  src={photo.url}
+                                  alt="post"
+                                  className="rounded-lg w-1/2"
+                                />
+                              ))
+                            : null}
+                        </div>
+                      </div>
+
+                      {/* actions */}
+                      <div className="flex gap-1 mt-[6px] items-center">
+                        <div className="p-0">
+                          <div className="flex gap-2 items-center cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all">
+                            <Icons.Comment />
+                            <span className="text-[9px]">Comments</span>
+                          </div>
+                        </div>
+                        <div className="flex gap-2 items-center cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all">
+                          <Icons.Share />
+                          <span className="text-[9px]">Share</span>
+                        </div>
+                        <button onClick={() => handleDeleteModal(post)}>
+                          <Icons.MoreHori />
+                        </button>
+                      </div>
                     </div>
 
-                    <div className="py-1 text-[11px]">
-                      <p>{post.message}</p>
-                    </div>
-
-                    {/* actions */}
-                    <div className="flex gap-8 mt-[6px] items-center">
-                      <div className="flex gap-2 items-center cursor-pointer">
-                        <Icons.Comment />
-                        <span className="text-[9px]">Comments</span>
-                      </div>
-                      <div className="flex gap-2 items-center cursor-pointer">
-                        <Icons.Share />
-                        <span className="text-[9px]">Share</span>
-                      </div>
-                      <button onClick={() => handleDeleteModal(post)}>
-                        <Icons.MoreHori />
+                    {/* upvote and downvote */}
+                    <div className="flex flex-col items-center justify-between h-full">
+                      <button>
+                        <Icons.ChevronUp />
+                      </button>
+                      <span className="flex items-end">0</span>
+                      <button>
+                        <Icons.ChevronDown />
                       </button>
                     </div>
-                  </div>
-                  <div className="flex flex-col items-center justify-between h-full">
-                    <button>
-                      <Icons.ChevronUp />
-                    </button>
-                    <span className="flex items-end">0</span>
-                    <button>
-                      <Icons.ChevronDown />
-                    </button>
                   </div>
                 </div>
               </PostCard>

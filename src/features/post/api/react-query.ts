@@ -25,7 +25,7 @@ export const useCreatePost = () => {
 
 export const useDeletePost = () => {
   const queryClient = useQueryClient()
-  return useMutation((id: string) => deletePost(id), {
+  return useMutation((id: number) => deletePost(id), {
     onSuccess: () => {
       queryClient.invalidateQueries('posts')
     },
