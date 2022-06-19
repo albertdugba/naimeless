@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "gitlens.currentLine.dateFormat": "",
+  "html.format.unformatted": "",
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
+}

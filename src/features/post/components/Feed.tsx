@@ -1,43 +1,34 @@
 import { useEffect, useState } from 'react'
-import { PostCard } from '../elements/Card'
-import { getLayout } from '../layout'
 import Gravatar from 'react-gravatar'
-import * as Icons from '../../../public/icons'
-import { Modal } from '../Modal/context'
-import { StyledModal } from './styled'
-import { Button } from '../elements/Button'
-import { MessageBox } from '../MessageBox'
-import axios from 'axios'
-import { useQuery } from 'react-query'
-import {
-  useCreatePost,
-  useDeletePost,
-} from '../../features/post/api/react-query'
 import { formatDistance } from 'date-fns'
-import Image from 'next/image'
-import { Post } from '../../features/post/interface/post'
+import { useCreatePost, useGetAllPosts } from '@features/post/api'
+import { useDeletePost } from '@features/post/api'
+import { Post } from '../interface/post'
+import { Modal } from '@/Modal/modal'
+import { StyledModal } from './index.style'
+import { Button } from '@/elements/Button'
+import { MessageBox } from '@/MessageBox'
+import { PostCard } from '@/elements/Card'
+import { getLayout } from '@/layout'
+import * as Icons from '@icons/index'
 
 export const Feed = () => {
   const [openModal, setOpenModal] = useState(false)
   const [deletePostModal, setDeletePostModal] = useState(false)
   const [selectPost, setSelectPost] = useState<Post>()
   const [input, setInput] = useState('')
+  const { post, isLoading, isSuccess, isError } = useGetAllPosts()
 
   const createPost = useCreatePost()
   const deletePost = useDeletePost()
 
-  const { data, isLoading, isSuccess } = useQuery<Post[], Error>('posts', () =>
-    axios.get('/api/posts').then((res) => res.data)
-  )
-
-  console.log('feed', data)
   const handleAddPost = () => {
     createPost.mutate({ message: input, published: true, author: 'nbvbn' })
   }
 
   const handleDeletePost = () => {
     if (selectPost?.id) {
-      deletePost.mutate(selectPost?.id)
+      deletePost.mutate({ id: selectPost?.id.toString() })
     }
   }
 
@@ -62,47 +53,49 @@ export const Feed = () => {
   ])
   return (
     <>
-      <Modal
-        isOpen={deletePostModal}
-        setIsOpen={() => setDeletePostModal(false)}
-      >
-        <StyledModal>
-          <div className="border-b">
-            <Modal.Header onClose={() => setDeletePostModal(false)}>
-              Delete Post {selectPost?.id}
-            </Modal.Header>
-          </div>
-          <Modal.Content>Youre about to delele Post</Modal.Content>
-          <Modal.Footer>
-            <Button variant="danger" onClick={handleDeletePost} fullWidth>
-              {deletePost.isLoading ? 'Deleting post' : 'Delete'}
-            </Button>
-          </Modal.Footer>
-        </StyledModal>
-      </Modal>
-      <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
-        <StyledModal>
-          <div className="border-b">
-            <Modal.Header onClose={() => setOpenModal(false)}>
-              Create Post
-            </Modal.Header>
-          </div>
-          <Modal.Content>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <MessageBox
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-            </form>
-          </Modal.Content>
-          <Modal.Footer>
-            <Button onClick={handleAddPost} fullWidth>
-              {createPost.isLoading ? 'Sumitting post' : 'Post'}
-            </Button>
-          </Modal.Footer>
-        </StyledModal>
-      </Modal>
-      <div className="flex items-center gap-4 bg-white p-6 rounded-[6px] border">
+      <div>
+        <Modal
+          isOpen={deletePostModal}
+          setIsOpen={() => setDeletePostModal(false)}
+        >
+          <StyledModal>
+            <div className="border-b">
+              <Modal.Header onClose={() => setDeletePostModal(false)}>
+                Delete Post {selectPost?.id}
+              </Modal.Header>
+            </div>
+            <Modal.Content>Youre about to delele Post</Modal.Content>
+            <Modal.Footer>
+              <Button variant="danger" onClick={handleDeletePost} fullWidth>
+                {deletePost.isLoading ? 'Deleting post' : 'Delete'}
+              </Button>
+            </Modal.Footer>
+          </StyledModal>
+        </Modal>
+        <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
+          <StyledModal>
+            <div className="border-b">
+              <Modal.Header onClose={() => setOpenModal(false)}>
+                Create Post
+              </Modal.Header>
+            </div>
+            <Modal.Content>
+              <form onSubmit={(e) => e.preventDefault()}>
+                <MessageBox
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                />
+              </form>
+            </Modal.Content>
+            <Modal.Footer>
+              <Button onClick={handleAddPost} fullWidth>
+                {createPost.isLoading ? 'Sumitting post' : 'Post'}
+              </Button>
+            </Modal.Footer>
+          </StyledModal>
+        </Modal>
+      </div>
+      <div className="flex items-center gap-4 bg-white p-6 rounded-[6px] border -mt-10">
         <Gravatar
           email="discord.com"
           className="w-[40px] h-[40px] rounded-full"
@@ -118,7 +111,7 @@ export const Feed = () => {
       {isLoading
         ? 'loading'
         : isSuccess &&
-          data.map((post) => (
+          post?.map((post) => (
             <div key={post.id} className="my-3">
               <PostCard>
                 <div className="w-full">

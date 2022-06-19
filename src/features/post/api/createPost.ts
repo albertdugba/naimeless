@@ -1,6 +1,14 @@
-import axios from 'axios'
+import { Prisma } from '@prisma/client'
 import { useMutation, useQueryClient } from 'react-query'
-import { deletePost } from '.'
+import axios from 'axios'
+
+export const createPost = async (post: Prisma.PostCreateInput) => {
+  return await axios({
+    url: '/api/posts/create-post',
+    method: 'POST',
+    data: post,
+  })
+}
 
 export const useCreatePost = () => {
   const queryClient = useQueryClient()
@@ -21,16 +29,4 @@ export const useCreatePost = () => {
       },
     }
   )
-}
-
-export const useDeletePost = () => {
-  const queryClient = useQueryClient()
-  return useMutation((id: number) => deletePost(id), {
-    onSuccess: () => {
-      queryClient.invalidateQueries('posts')
-    },
-    onError: () => {
-      console.log('Post deleted successfully')
-    },
-  })
 }

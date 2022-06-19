@@ -1,4 +1,4 @@
-import { BaseEntity } from '../../../types'
+import { BaseEntity } from 'src/types'
 
 export interface Post extends BaseEntity {
   id: number
