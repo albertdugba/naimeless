@@ -2,9 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/components/*"],
+      "@*": ["src/components/*"],
       "@features/*": ["src/features/*"],
-      "@/utils/*": ["src/utils/*"],
+      "@utils/*": ["src/utils/*"],
       "@icons/*":["public/icons/*"],
       "@interface/*":["src/interface/*"],
     },
@@ -32,6 +32,6 @@
      "pages/**/*",
  "components/**/*",
  "next.config.js" 
-],
+, "src/features/post/components/style.ts"],
   "exclude": ["node_modules"]
 }

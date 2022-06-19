@@ -16,7 +16,7 @@ export const MyModal: FunctionComponent<ModalProps> = ({
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <M>
-        <Modal.Header onClose={setIsOpen}>
+        <Modal.Header>
           <div>Modal Header</div>
         </Modal.Header>
         <Modal.Content>

@@ -54,7 +54,7 @@ export const StyledButton = styled.button<ButtonProps<'button'>>`
   line-height: 1.5;
   color: ${(props) =>
     props.disabled
-      ? colors.neutral[600]
+      ? colors.neutral[200]
       : props.variant === 'secondary'
       ? colors.purple[200]
       : colors.neutral[100]};

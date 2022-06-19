@@ -1,30 +1,24 @@
 import { useEffect, useState } from 'react'
 import Gravatar from 'react-gravatar'
 import { formatDistance } from 'date-fns'
-import { useCreatePost, useGetAllPosts } from '@features/post/api'
+import { useGetAllPosts } from '@features/post/api'
 import { useDeletePost } from '@features/post/api'
 import { Post } from '../interface/post'
-import { Modal } from '@/Modal/modal'
-import { StyledModal } from './index.style'
-import { Button } from '@/elements/Button'
-import { MessageBox } from '@/MessageBox'
-import { PostCard } from '@/elements/Card'
-import { getLayout } from '@/layout'
+import { Modal } from '@Modal/modal'
+import { StyledModal } from './style'
+import { Button } from '@elements/Button'
+import { PostCard } from '@elements/Card'
+import { getLayout } from '@layout'
 import * as Icons from '@icons/index'
+import { CreatePost } from './CreatePost'
 
 export const Feed = () => {
   const [openModal, setOpenModal] = useState(false)
   const [deletePostModal, setDeletePostModal] = useState(false)
   const [selectPost, setSelectPost] = useState<Post>()
-  const [input, setInput] = useState('')
-  const { post, isLoading, isSuccess, isError } = useGetAllPosts()
+  const { post, isLoading, isSuccess } = useGetAllPosts()
 
-  const createPost = useCreatePost()
   const deletePost = useDeletePost()
-
-  const handleAddPost = () => {
-    createPost.mutate({ message: input, published: true, author: 'nbvbn' })
-  }
 
   const handleDeletePost = () => {
     if (selectPost?.id) {
@@ -38,19 +32,10 @@ export const Feed = () => {
   }
 
   useEffect(() => {
-    if (createPost.isSuccess || createPost.isError) {
-      setOpenModal(false)
-    }
-
     if (deletePost.isSuccess || deletePost.isError) {
       setDeletePostModal(false)
     }
-  }, [
-    createPost.isError,
-    createPost.isSuccess,
-    deletePost.isError,
-    deletePost.isSuccess,
-  ])
+  }, [deletePost.isError, deletePost.isSuccess])
   return (
     <>
       <div>
@@ -60,9 +45,7 @@ export const Feed = () => {
         >
           <StyledModal>
             <div className="border-b">
-              <Modal.Header onClose={() => setDeletePostModal(false)}>
-                Delete Post {selectPost?.id}
-              </Modal.Header>
+              <Modal.Header>Delete Post {selectPost?.id}</Modal.Header>
             </div>
             <Modal.Content>Youre about to delele Post</Modal.Content>
             <Modal.Footer>
@@ -72,30 +55,9 @@ export const Feed = () => {
             </Modal.Footer>
           </StyledModal>
         </Modal>
-        <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
-          <StyledModal>
-            <div className="border-b">
-              <Modal.Header onClose={() => setOpenModal(false)}>
-                Create Post
-              </Modal.Header>
-            </div>
-            <Modal.Content>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <MessageBox
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                />
-              </form>
-            </Modal.Content>
-            <Modal.Footer>
-              <Button onClick={handleAddPost} fullWidth>
-                {createPost.isLoading ? 'Sumitting post' : 'Post'}
-              </Button>
-            </Modal.Footer>
-          </StyledModal>
-        </Modal>
+        <CreatePost openModal={openModal} setOpenModal={setOpenModal} />
       </div>
-      <div className="flex items-center gap-4 bg-white p-6 rounded-[6px] border -mt-10">
+      <div className="flex items-center gap-4 bg-white p-6 rounded-[6px] border -mt-4">
         <Gravatar
           email="discord.com"
           className="w-[40px] h-[40px] rounded-full"
