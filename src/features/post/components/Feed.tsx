@@ -106,20 +106,29 @@ export const Feed = () => {
                                 offset={{ horizontal: 0, vertical: 0 }}
                               >
                                 <div className="flex justify-center items-center h-full">
-                                  <div className="w-[200px] px-2">Delete</div>
+                                  <div className="w-[200px] px-2 flex items-center gap-2">
+                                    <Icons.Trash />
+                                    <span>Delete</span>
+                                  </div>
                                 </div>
                                 <div className="flex justify-center items-center h-full">
-                                  <div className="w-[200px] px-2">Report</div>
+                                  <div className="w-[200px] px-2 flex items-center gap-2">
+                                    <Icons.Flag />
+                                    <span>Report</span>
+                                  </div>
                                 </div>
                                 <div className="flex justify-center items-center h-full">
-                                  <div className="w-[200px] px-2">Save</div>
+                                  <div className="w-[200px] px-2 flex items-center gap-2">
+                                    <Icons.Pin />
+                                    <span>Save</span>
+                                  </div>
                                 </div>
                               </Dropdown>
                             </div>
 
                             {/* message body */}
                             <div className="text-[11px] py-1 mt-2">
-                              <p className="mb-1">{post.message}</p>
+                              <p className="mb-1 text-lg">{post.message}</p>
                               <div className="w-full border">
                                 {post.photos?.length
                                   ? post?.photos?.map((photo) => (

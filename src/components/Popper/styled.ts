@@ -20,6 +20,8 @@ export const DropdownItem = styled.li`
   cursor: pointer;
   height: 40px;
   align-items: center;
+  margin-top: 2px;
+  margin-bottom: 2px;
 
   &:hover {
     background-color: ${colors.neutral[300]};
