@@ -2,8 +2,8 @@ import { createContext, FC, ReactNode, useMemo } from 'react'
 import { Content, ModalContentProps } from './Content'
 import { Header, ModalHeaderProps } from './Header'
 import { Footer, ModalFooterProps } from './Footer'
-import { StyledModalContainer, StyledModalInner, StyledOverlay } from './styled'
-import { AnimatePresence } from 'framer-motion'
+import { StyledModalInner, StyledOverlay } from './styled'
+import { AnimatePresence, motion } from 'framer-motion'
 
 interface ModalComposition {
   Header: FC<ModalHeaderProps>
@@ -38,14 +38,10 @@ export const Modal: FC<ModalProps> & ModalComposition = ({
   return (
     <ModalContext.Provider value={memoisedVal}>
       <AnimatePresence>
-        <StyledModalContainer
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
+        <motion.div>
           {isOpen && <StyledOverlay />}
           {isOpen && <StyledModalInner>{children}</StyledModalInner>}
-        </StyledModalContainer>
+        </motion.div>
       </AnimatePresence>
     </ModalContext.Provider>
   )

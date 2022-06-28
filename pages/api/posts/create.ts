@@ -3,14 +3,16 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 const prisma = new PrismaClient()
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'POST') {
     return res.status(400).end()
   }
-  const { message, author } = req.body
+  const { message, author, channelName } = req.body
 
   async function main() {
+    if (!message || !author || !channelName) {
+      return res.satatus(400).json({ message: 'All fields are required!' })
+    }
     const post = await prisma.post.create({
       data: { message, author, published: true },
     })

@@ -6,6 +6,7 @@ import { Modal } from '@Modal/modal'
 import { useCreatePost } from '../api'
 import { Button } from '@elements/Button'
 import * as Icons from '@icons/index'
+import { AnimatePresence } from 'framer-motion'
 
 interface CreatePostProps {
   setOpenModal: (val: boolean) => void
@@ -16,7 +17,7 @@ export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
   const { openModal, setOpenModal } = props
   const [inView, setInView] = useState<'channels' | 'messageText'>()
   const [selectedChannel, setSelectedChannel] = useState('')
-  const [input, setInput] = useState('')
+  const [message, setMessage] = useState('')
   const createPost = useCreatePost()
 
   const channels = [
@@ -44,7 +45,7 @@ export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
   }
 
   const handleAddPost = () => {
-    createPost.mutate({ message: input, published: true, author: 'nbvbn' })
+    createPost.mutate({ message, published: true, author: 'nbvbn' })
   }
 
   const handleViewMode = (channel: 'channels' | 'messageText') => {
@@ -54,41 +55,45 @@ export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
     <>
       {inView === 'channels' ? (
         <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
-          <StyledModal>
-            <div className="border-b">
-              <Modal.Header>
-                <div className="flex items-center justify-between w-full">
-                  <button
-                    onClick={() => setInView('messageText')}
-                    className="flex items-center justify-center h-[35px] w-[35px] cursor-pointer bg-gray-200 rounded-full"
-                  >
-                    <Icons.ArrowLeft />
-                  </button>
-                  <span>Select Channel</span>
-                </div>
-              </Modal.Header>
-            </div>
-            <Modal.Content>
-              <ul>
-                {channels.map((channel) => (
-                  <li
-                    className={`px-3 py-2 hover:bg-gray-200 cursor-pointer ${
-                      selectedChannel === channel.val ? 'bg-gray-200' : ''
-                    } rounded-[7px] w-full transition-all my-2`}
-                    onClick={() => handleSelectChannel(channel.val)}
-                    key={channel.id}
-                  >
-                    {channel.val}
-                  </li>
-                ))}
-              </ul>
-            </Modal.Content>
-            <Modal.Footer>
-              <Button disabled onClick={handleAddPost} fullWidth>
-                {createPost.isLoading ? 'Sumitting post' : 'Post'}
-              </Button>
-            </Modal.Footer>
-          </StyledModal>
+          <AnimatePresence>
+            <StyledModal layoutId="channels">
+              <div className="border-b">
+                <Modal.Header>
+                  <div className="flex items-center justify-between w-full">
+                    <button
+                      onClick={() => setInView('messageText')}
+                      className="flex items-center justify-center h-[35px] w-[35px] cursor-pointer bg-gray-200 rounded-full"
+                    >
+                      <Icons.ArrowLeft />
+                    </button>
+                    <span>Select Channel</span>
+                  </div>
+                </Modal.Header>
+              </div>
+              <Modal.Content>
+                <ul>
+                  {channels.map((channel) => (
+                    <li
+                      onClick={() => handleSelectChannel(channel.val)}
+                      key={channel.id}
+                      className={`flex items-center justify-between px-3 py-3 hover:bg-gray-200 cursor-pointer rounded-[5px] w-full transition-all my-2 ${
+                        selectedChannel === channel.val ? 'bg-gray-200' : ''
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <Gravartar
+                          className="h-[25px] w-[25px] rounded-full"
+                          email={channel.val?.toLocaleLowerCase()}
+                        />
+                        @{channel.val.toLocaleLowerCase()}
+                      </div>
+                      {selectedChannel === channel.val && <Icons.Check />}
+                    </li>
+                  ))}
+                </ul>
+              </Modal.Content>
+            </StyledModal>
+          </AnimatePresence>
         </Modal>
       ) : (
         <div>
@@ -98,9 +103,13 @@ export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
                 <Modal.Header>
                   <div className="flex items-center justify-between w-full">
                     <span>Create Post</span>
-                    <div className="flex items-center justify-center h-[35px] w-[35px] cursor-pointer bg-gray-200 rounded-full">
+                    <button
+                      onClick={() => setOpenModal(false)}
+                      arial-label="Close button icon"
+                      className="flex items-center justify-center h-[35px] w-[35px] cursor-pointer bg-gray-200 rounded-full"
+                    >
                       <Icons.Times color="text-gray" size={20} />
-                    </div>
+                    </button>
                   </div>
                 </Modal.Header>
               </div>
@@ -118,13 +127,20 @@ export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
                       className="flex text-[12px] items-center gap-[5px] bg-purple-200 p-[4px] rounded-[4px] cursor-pointer"
                     >
                       <People />
-                      <span>{selectedChannel}</span>
+                      <span>
+                        @
+                        {selectedChannel
+                          ? selectedChannel.toLocaleLowerCase()
+                          : 'select channel'.toLocaleLowerCase()}
+                      </span>
                       <DownArrow />
                     </button>
                   </div>
                   <textarea
-                    onChange={(e) => setInput(e.target.value)}
-                    value={input}
+                    onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                      setMessage(e.target.value)
+                    }
+                    value={message}
                     className="outline-none w-full p-4 rounded-[6px]"
                     placeholder="Whats happening ?"
                   />

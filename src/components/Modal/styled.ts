@@ -1,13 +1,6 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
-const StyledModalContainer = styled(motion.div)`
-  border-radius: 8px;
-  max-width: 100%;
-  position: relative;
-  padding: 1rem;
-`
-
 const StyledModalInner = styled(motion.div)`
   position: fixed;
   top: 17%;
@@ -21,7 +14,7 @@ const StyledModalInner = styled(motion.div)`
   overflow-y: scroll;
 `
 
-const StyledOverlay = styled(motion.div)`
+const StyledOverlay = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -32,4 +25,4 @@ const StyledOverlay = styled(motion.div)`
   z-index: 999;
 `
 
-export { StyledModalContainer, StyledModalInner, StyledOverlay }
+export { StyledModalInner, StyledOverlay }

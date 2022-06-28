@@ -17,6 +17,7 @@ model Post {
   author      String
   channelName String?
   photos      Photo[]
+  votes       Int
 }
 
 model Photo {

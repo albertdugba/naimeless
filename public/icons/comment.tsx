@@ -7,8 +7,9 @@ const Comment = () => (
     height="1em"
     preserveAspectRatio="xMidYMid meet"
     viewBox="0 0 24 24"
+    stroke="#666"
   >
-    <g fill="none" stroke="#2a2929" strokeLinecap="round" strokeWidth="2">
+    <g fill="none" stroke="#666" strokeLinecap="round" strokeWidth="2">
       <path
         strokeLinejoin="round"
         d="M14 19c3.771 0 5.657 0 6.828-1.172C22 16.657 22 14.771 22 11c0-3.771 0-5.657-1.172-6.828C19.657 3 17.771 3 14 3h-4C6.229 3 4.343 3 3.172 4.172C2 5.343 2 7.229 2 11c0 3.771 0 5.657 1.172 6.828c.653.654 1.528.943 2.828 1.07"
