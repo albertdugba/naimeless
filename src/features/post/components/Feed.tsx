@@ -88,11 +88,11 @@ export const Feed = () => {
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <div className="p-0">
-                                  <span className="flex items-center justify-center text-[10px] text-blue-400 bg-blue-200 rounded-full px-[6px] py-[2px]">
+                                  <span className="flex items-center justify-center text-[13px] text-blue-400 bg-blue-200 rounded-full px-[6px] py-[2px]">
                                     {`@${post.channelName}`}
                                   </span>
                                 </div>
-                                <span className="text-[9px] text-gray-400 inline-block">
+                                <span className="text-[12px] text-gray-400 inline-block">
                                   {formatDistance(
                                     new Date(post.createdAt),
                                     new Date(),

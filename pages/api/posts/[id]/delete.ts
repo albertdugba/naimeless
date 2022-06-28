@@ -8,7 +8,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).end()
   }
 
-  const id = String(req.query.id)
+  const id = Number(req.query.id)
 
   async function main() {
     const json = await prisma.post.delete({ where: { id } })
