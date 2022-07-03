@@ -12,6 +12,10 @@ const StyledModalInner = styled(motion.div)`
   margin: auto;
   border-radius: 9px;
   overflow-y: scroll;
+
+  @media (max-width: 801px) {
+    width: 90%;
+  }
 `
 
 const StyledOverlay = styled.div`

@@ -13,7 +13,12 @@ export const createPost = async (post: Prisma.PostCreateInput) => {
 export const useCreatePost = () => {
   const queryClient = useQueryClient()
   return useMutation(
-    (values: { message: string; published: boolean; author: string }) =>
+    (values: {
+      message: string
+      published: boolean
+      author: string
+      channelName: string
+    }) =>
       axios({
         url: `/api/posts/create`,
         method: 'POST',

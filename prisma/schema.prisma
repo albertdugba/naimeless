@@ -9,15 +9,35 @@ datasource db {
 }
 
 model Post {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   message     String
-  published   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt()
+  published   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt()
   author      String
   channelName String?
   photos      Photo[]
-  votes       Int
+  vote        Vote?
+  comments    Comment[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+  post      Post?    @relation(fields: [postId], references: [id])
+  postId    Int?
+}
+
+model Vote {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+  postId    Int      @unique
+  post      Post     @relation(fields: [postId], references: [id])
+  isUpvote  Boolean
+  value     Int      @default(0)
 }
 
 model Photo {

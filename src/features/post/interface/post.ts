@@ -7,8 +7,15 @@ export interface Post extends BaseEntity {
   author: string
   channelName: string
   photos: Photo[]
+  vote: Vote[]
 }
 
+interface Vote extends BaseEntity {
+  id: number
+  isUpvote: boolean
+  postId: number
+  value: string
+}
 interface Photo extends BaseEntity {
   id: number
   cloudinaryPublicId: string

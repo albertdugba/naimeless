@@ -1,12 +1,12 @@
 import { PrismaClient } from '@prisma/client'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next/types'
 const prisma = new PrismaClient()
 
 export default function showPostDetails(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const id: number = parseInt(req.query.id)
+  const id: number = parseInt(String(req.query.id))
   async function main() {
     const data = await prisma.post.findUnique({
       where: { id },
