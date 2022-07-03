@@ -10,7 +10,7 @@ export default function withPrismaClient(
   async function main() {
     const posts = await prisma.post.findMany({
       orderBy: [{ createdAt: 'desc' }],
-      include: { photos: true, vote: true },
+      include: { photos: true, vote: true, comments: true },
     })
     return res.status(200).json(posts)
   }

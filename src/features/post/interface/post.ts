@@ -1,3 +1,4 @@
+import { Comments } from '@features/comments/interface/comment'
 import { BaseEntity } from 'src/types'
 
 export interface Post extends BaseEntity {
@@ -8,6 +9,7 @@ export interface Post extends BaseEntity {
   channelName: string
   photos: Photo[]
   vote: Vote[]
+  comments: Comments[]
 }
 
 interface Vote extends BaseEntity {

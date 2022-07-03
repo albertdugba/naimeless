@@ -18,6 +18,7 @@ import { CreatePost } from './CreatePost'
 import { GenericList } from '@List'
 import { Dropdown } from '@Popper/Dropdown'
 import { motion, AnimatePresence } from 'framer-motion'
+import { CommentList } from '@features/comments/components'
 
 export const Feed = () => {
   const [voteValue, setVoteValue] = useState(10)
@@ -25,6 +26,7 @@ export const Feed = () => {
   const [deletePostModal, setDeletePostModal] = useState(false)
   const [selectPost, setSelectPost] = useState<Post>()
   const [postModal, setPostModal] = useState(false)
+  const [toggleComment, setToggleComment] = useState(false)
 
   const { post: allPosts, isLoading, isSuccess } = useGetAllPosts()
   const postId = Number(selectPost?.id)
@@ -114,7 +116,7 @@ export const Feed = () => {
           {isLoading
             ? 'loading'
             : isSuccess && (
-                <motion.div layout>
+                <motion.div>
                   <GenericList data={allPosts}>
                     {(post) => (
                       <div key={post.id} className="my-3">
@@ -210,9 +212,16 @@ export const Feed = () => {
                                     </button>
                                   </div>
                                   <div className="p-0">
-                                    <div className="cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all">
+                                    <button
+                                      onClick={() =>
+                                        setToggleComment(
+                                          (prevState) => !prevState
+                                        )
+                                      }
+                                      className="cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all"
+                                    >
                                       <Icons.Comment />
-                                    </div>
+                                    </button>
                                   </div>
                                   <div className="cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all">
                                     <Icons.Share />
@@ -221,6 +230,16 @@ export const Feed = () => {
                                 <Icons.MoreHori />
                               </button> */}
                                 </div>
+
+                                {/* comments section */}
+                                {toggleComment ? (
+                                  <>
+                                    <div className="flex items-center h-full justify-center w-full">
+                                      <span className="w-full border-b my-4"></span>
+                                    </div>
+                                    <CommentList commnents={post.comments} />
+                                  </>
+                                ) : null}
                               </div>
                             </div>
                           </div>
