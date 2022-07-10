@@ -1,10 +1,10 @@
-import { FunctionComponent, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
 
 export interface ModalHeaderProps {
   children: ReactNode
 }
-export const Header: FunctionComponent<ModalHeaderProps> = ({ children }) => {
+export const Header: FC<ModalHeaderProps> = ({ children }) => {
   return <ModalHeader>{children}</ModalHeader>
 }
 

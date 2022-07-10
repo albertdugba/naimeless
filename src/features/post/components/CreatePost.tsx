@@ -1,4 +1,4 @@
-import { ChangeEvent, FunctionComponent, useEffect, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
 import Gravartar from 'react-gravatar'
 import { DownArrow, People } from '@icons/index'
 import { StyledModal } from './style'
@@ -13,7 +13,7 @@ interface CreatePostProps {
   openModal: boolean
 }
 
-export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
+export const CreatePost: FC<CreatePostProps> = (props) => {
   const { openModal, setOpenModal } = props
   const [inView, setInView] = useState<'channels' | 'messageText'>(
     'messageText'

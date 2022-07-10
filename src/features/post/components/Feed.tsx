@@ -18,7 +18,7 @@ import { CreatePost } from './CreatePost'
 import { GenericList } from '@List'
 import { Dropdown } from '@Popper/Dropdown'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CommentList } from '@features/comments/components'
+import { AddComment, CommentList } from '@features/comments/components'
 
 export const Feed = () => {
   const [voteValue, setVoteValue] = useState(10)
@@ -204,7 +204,7 @@ export const Feed = () => {
                                     >
                                       <Icons.ArrowUp />
                                     </button>
-                                    <span className="text-sm text-gray-500">
+                                    <span className="text-[13px] text-gray-500">
                                       12
                                     </span>
                                     <button>
@@ -218,9 +218,12 @@ export const Feed = () => {
                                           (prevState) => !prevState
                                         )
                                       }
-                                      className="cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all"
+                                      className="flex items-center gap-1 cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all"
                                     >
                                       <Icons.Comment />
+                                      <span className="text-[13px] text-gray-500">
+                                        {post?.comments?.length} Comments
+                                      </span>
                                     </button>
                                   </div>
                                   <div className="cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all">
@@ -237,6 +240,7 @@ export const Feed = () => {
                                     <div className="flex items-center h-full justify-center w-full">
                                       <span className="w-full border-b my-4"></span>
                                     </div>
+                                    <AddComment postId={5} />
                                     <CommentList commnents={post.comments} />
                                   </>
                                 ) : null}

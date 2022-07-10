@@ -1,14 +1,12 @@
 import { GenericList } from '@List'
-import { FunctionComponent } from 'react'
+import { FC } from 'react'
 import { Comments } from '../interface/comment'
 import { SingleComment } from './Comment'
 
 interface CommentListProps {
   commnents: Comments[]
 }
-export const CommentList: FunctionComponent<CommentListProps> = ({
-  commnents,
-}) => {
+export const CommentList: FC<CommentListProps> = ({ commnents }) => {
   return (
     <GenericList data={commnents}>
       {(comment) => (

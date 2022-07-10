@@ -1,5 +1,5 @@
 import { formatDistance } from 'date-fns'
-import { FunctionComponent } from 'react'
+import { FC } from 'react'
 import Gravatar from 'react-gravatar'
 import * as Icons from '@icons/index'
 
@@ -9,7 +9,7 @@ interface CommentProps {
   postId: number
   createdAt: Date
 }
-export const SingleComment: FunctionComponent<CommentProps> = ({
+export const SingleComment: FC<CommentProps> = ({
   message,
   postId,
   createdAt,

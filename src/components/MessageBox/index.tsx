@@ -1,4 +1,4 @@
-import { ChangeEvent, FunctionComponent, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import Gravartar from 'react-gravatar'
 import { DownArrow, People } from '@icons/index'
 
@@ -9,7 +9,7 @@ interface Props {
   value: string
 }
 
-export const MessageBox: FunctionComponent<Props> = (props) => {
+export const MessageBox: FC<Props> = (props) => {
   const [inView, setInView] = useState<'channels' | 'messageText'>()
   const [selectedChannel, setSelectedChannel] = useState('')
   const { onChange, onSelectChannel, channels, value } = props
