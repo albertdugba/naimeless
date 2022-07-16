@@ -28,6 +28,15 @@ model Comment {
   updatedAt DateTime @updatedAt()
   post      Post?    @relation(fields: [postId], references: [id])
   postId    Int?
+  replies   Reply[]
+  commentId Int?
+}
+
+model Reply {
+  id        Int     @id @default(autoincrement())
+  body      String
+  comment   Comment @relation(fields: [commentId], references: [id])
+  commentId Int
 }
 
 model Vote {

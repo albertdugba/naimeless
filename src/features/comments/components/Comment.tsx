@@ -1,5 +1,5 @@
 import { formatDistance } from 'date-fns'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import Gravatar from 'react-gravatar'
 import * as Icons from '@icons/index'
 
@@ -14,6 +14,7 @@ export const SingleComment: FC<CommentProps> = ({
   postId,
   createdAt,
 }) => {
+  const [toggledInput, setToggledInput] = useState(false)
   return (
     <li className="list-none my-2">
       <div className="">
@@ -22,7 +23,7 @@ export const SingleComment: FC<CommentProps> = ({
             email={`${postId}@mail.com`}
             className="h-[20px] w-[20px] rounded-full"
           />
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 w-full">
             <span className="text-[12px] text-gray-400 my-0 p-0 inline-block">
               {formatDistance(new Date(createdAt), new Date(), {
                 addSuffix: true,
@@ -44,7 +45,7 @@ export const SingleComment: FC<CommentProps> = ({
               </div>
               <div className="p-0">
                 <button
-                  //   onClick={() => setToggleComment((prevState) => !prevState)}
+                  onClick={() => setToggledInput((prev) => !prev)}
                   className="cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all"
                 >
                   <Icons.Comment />
@@ -53,9 +54,16 @@ export const SingleComment: FC<CommentProps> = ({
               <div className="cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all">
                 <Icons.Share />
               </div>
-              {/* <button onClick={() => handleDeleteModal(post)}>
-                                <Icons.MoreHori />
-                              </button> */}
+            </div>
+
+            {/* replies */}
+            <div className="w-full">
+              {toggledInput && (
+                <input
+                  type="text"
+                  className="border py-3 px-3 rounded-md w-full"
+                />
+              )}
             </div>
           </div>
         </div>
