@@ -4,7 +4,13 @@ import { StyledButton } from './styled'
 export type ButtonProps<T extends React.ElementType> = {
   children: React.ReactNode
   label?: string
-  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger'
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'warning'
+    | 'danger'
+    | 'outlined'
   size?: 'small' | 'medium' | 'large'
   fullWidth?: boolean
   startIcon?: React.ReactElement | string

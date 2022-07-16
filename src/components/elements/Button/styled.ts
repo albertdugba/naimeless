@@ -50,13 +50,16 @@ export const StyledButton = styled.button<ButtonProps<'button'>>`
     }
   }};
   outline: none;
-  border: none;
+  border: ${({ variant }) =>
+    variant === 'outlined' ? `1px solid ${colors.neutral[400]}` : ''};
   line-height: 1.5;
   color: ${(props) =>
     props.disabled
       ? colors.neutral[200]
       : props.variant === 'secondary'
       ? colors.purple[200]
+      : props.variant === 'outlined'
+      ? colors.neutral[500]
       : colors.neutral[100]};
 
   &:hover {
