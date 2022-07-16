@@ -1,5 +1,6 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { PrismaClient } from '@prisma/client'
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next/types'
 
 const prisma = new PrismaClient()
 
@@ -11,10 +12,10 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 
   async function main() {
     if (!message || !author || !channelName) {
-      return res.satatus(400).json({ message: 'All fields are required!' })
+      return res.status(400).json({ message: 'All fields are required!' })
     }
     const post = await prisma.post.create({
-      data: { message, author, published: true },
+      data: { message, author, channelName, published: true },
     })
     return res.status(200).json({ message: 'New post added!', post })
   }

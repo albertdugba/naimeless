@@ -1,5 +1,5 @@
 :root {
-  --modalHeader: 80px;
+  --modalHeader: 40px;
   --modalFooter: 70px;
   --modalContent: calc(100% - 40px * 2 + 20);
 }

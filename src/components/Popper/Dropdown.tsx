@@ -1,11 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, {
-  FunctionComponent,
-  ReactElement,
-  ReactNode,
-  useRef,
-  useState,
-} from 'react'
+import React, { FC, ReactElement, ReactNode, useRef, useState } from 'react'
 import { usePopper } from 'react-popper'
 import { Placement } from '@popperjs/core'
 import { useHandleClickOutside } from '@hooks/useClickOutside'
@@ -20,7 +14,7 @@ interface DropdownProps {
     vertical: number
   }
 }
-export const Dropdown: FunctionComponent<DropdownProps> = ({
+export const Dropdown: FC<DropdownProps> = ({
   titleElement: TitleElement = <h1>Click</h1>,
   placement = 'bottom',
   offset = { horizontal: 0, vertical: 0 },

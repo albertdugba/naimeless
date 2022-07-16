@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next/types'
 
 const prisma = new PrismaClient()
 // eslint-disable-next-line import/no-anonymous-default-export

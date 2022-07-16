@@ -1,11 +1,11 @@
-import { FunctionComponent } from 'react'
+import { FC } from 'react'
 
 interface IconProps {
   color: string
   size: number
 }
 
-const Times: FunctionComponent<IconProps> = ({ color, size, ...rest }) => {
+const Times: FC<IconProps> = ({ color, size, ...rest }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

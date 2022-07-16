@@ -1,4 +1,4 @@
-import { ChangeEvent, FunctionComponent, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
 import Gravartar from 'react-gravatar'
 import { DownArrow, People } from '@icons/index'
 import { StyledModal } from './style'
@@ -13,9 +13,11 @@ interface CreatePostProps {
   openModal: boolean
 }
 
-export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
+export const CreatePost: FC<CreatePostProps> = (props) => {
   const { openModal, setOpenModal } = props
-  const [inView, setInView] = useState<'channels' | 'messageText'>()
+  const [inView, setInView] = useState<'channels' | 'messageText'>(
+    'messageText'
+  )
   const [selectedChannel, setSelectedChannel] = useState('')
   const [message, setMessage] = useState('')
   const createPost = useCreatePost()
@@ -45,8 +47,19 @@ export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
   }
 
   const handleAddPost = () => {
-    createPost.mutate({ message, published: true, author: 'nbvbn' })
+    createPost.mutate({
+      message,
+      published: true,
+      author: 'nbvbn',
+      channelName: selectedChannel,
+    })
   }
+
+  useEffect(() => {
+    if (createPost.isSuccess) {
+      setOpenModal(false)
+    }
+  }, [createPost.isSuccess, setOpenModal])
 
   const handleViewMode = (channel: 'channels' | 'messageText') => {
     setInView(channel)
@@ -147,7 +160,7 @@ export const CreatePost: FunctionComponent<CreatePostProps> = (props) => {
                 </form>
               </Modal.Content>
               <Modal.Footer>
-                <Button disabled onClick={handleAddPost} fullWidth>
+                <Button disabled={!message} onClick={handleAddPost} fullWidth>
                   {createPost.isLoading ? 'Sumitting post' : 'Post'}
                 </Button>
               </Modal.Footer>

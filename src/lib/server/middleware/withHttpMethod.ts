@@ -1,5 +1,5 @@
 import { HTTP_METHODS } from '../shared/types'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest, NextApiResponse } from 'next/types'
 
 export const withHttpMethod = (method: HTTP_METHODS) => (handler) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {

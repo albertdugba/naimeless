@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import { FC } from 'react'
 import styled from 'styled-components'
 import { Button } from '../elements/Button'
 import { TextField } from '../elements/Form'
@@ -9,10 +9,7 @@ interface ModalProps {
   setIsOpen: (val: boolean) => void
 }
 
-export const MyModal: FunctionComponent<ModalProps> = ({
-  setIsOpen,
-  isOpen,
-}) => {
+export const MyModal: FC<ModalProps> = ({ setIsOpen, isOpen }) => {
   return (
     <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
       <M>
