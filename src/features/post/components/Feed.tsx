@@ -74,6 +74,7 @@ export const Feed = () => {
         <input
           type="text"
           placeholder="Whats going on"
+          arial-label="Create Post"
           autoFocus={false}
           onClick={() => setOpenModal(true)}
           className="px-2 py-3 rounded-full w-full outline-none bg-gray-100 cursor-pointer"

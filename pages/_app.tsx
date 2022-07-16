@@ -3,9 +3,9 @@ import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../src/utils'
 import { ReactElement, ReactNode } from 'react'
-import { NextPage } from 'next'
 import { MainLayout } from '../src/components/layout'
 import { QueryClientProvider, QueryClient } from 'react-query'
+import { NextPage } from 'next/types'
 
 const queryClient = new QueryClient()
 

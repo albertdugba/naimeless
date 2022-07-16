@@ -6,6 +6,8 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended",
+    "plugin:cypress/recommended",
+    "plugin:chai-friendly/recommended",
     "next",
     "next/core-web-vitals",
     "prettier"

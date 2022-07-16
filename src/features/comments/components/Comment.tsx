@@ -20,6 +20,7 @@ export const SingleComment: FC<CommentProps> = ({
 }) => {
   const [toggledInput, setToggledInput] = useState(false)
   const [reply, setReply] = useState('')
+
   return (
     <li className="list-none my-2 relative">
       <div className="">

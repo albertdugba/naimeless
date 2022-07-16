@@ -5,12 +5,12 @@
       "@*": ["src/components/*"],
       "@features/*": ["src/features/*"],
       "@utils/*": ["src/utils/*"],
-      "@icons/*":["public/icons/*"],
-      "@interface/*":["src/interface/*"],
+      "@icons/*": ["public/icons/*"],
+      "@interface/*": ["src/interface/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["cypress"],
+    "types": ["cypress", "@testing-library/cypress"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -27,11 +27,12 @@
   },
   "include": [
     "next-env.d.ts",
-     "**/*.ts",
-     "**/*.tsx",
-     "pages/**/*",
- "components/**/*",
- "next.config.js" 
-, "src/features/post/components/style.ts"],
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/**/*",
+    "components/**/*",
+    "next.config.js",
+    "src/features/post/components/style.ts"
+  ],
   "exclude": ["node_modules"]
 }
