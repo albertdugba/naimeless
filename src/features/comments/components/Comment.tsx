@@ -22,6 +22,7 @@ export const SingleComment: FC<CommentProps> = ({
 }) => {
   const [toggledInput, setToggledInput] = useState(false)
   const [reply, setReply] = useState('')
+  const [viewMoreReplies, setViewMoreReplies] = useState(false)
 
   const createReply = useAddCommentReply(postId)
 
@@ -89,7 +90,16 @@ export const SingleComment: FC<CommentProps> = ({
                         }
                         className="border px-2 py-4 rounded-md w-full outline-none text-gray-500"
                       />
-                      <div className="flex justify-end">
+                      <div className="flex gap-3 justify-end">
+                        <Button
+                          onClick={() => setToggledInput(false)}
+                          variant="outlined"
+                          size="small"
+                        >
+                          <div className="whitespace-nowrap px-4 py-1">
+                            Cancel
+                          </div>
+                        </Button>
                         <Button
                           onClick={handleAddReply}
                           variant="primary"
@@ -105,26 +115,42 @@ export const SingleComment: FC<CommentProps> = ({
                 )}
                 {/* replies */}
                 <div className="replies">
-                  {replies.map((reply) => (
-                    <li
-                      key={reply.id}
-                      className="flex flex-col gap-2 text-[1rem] my-2"
+                  {replies.length ? (
+                    <button
+                      onClick={() => setViewMoreReplies((val) => !val)}
+                      className="text-purple-600 font-bold"
                     >
-                      <div className="flex gap-2">
-                        <Gravatar
-                          email={`${postId}@mail.com`}
-                          className="h-[20px] w-[20px] rounded-full"
-                        />{' '}
-                        {/* <span className="left-0 absolute w-full border-t  bottom-6"></span> */}
-                        <span className="text-[12px] text-gray-400 my-0 p-0 inline-block">
-                          {formatDistance(new Date(createdAt), new Date(), {
-                            addSuffix: true,
-                          })}
-                        </span>
-                      </div>
-                      <p className="my-0 p-0 inline-block pl-7">{reply.body}</p>
-                    </li>
-                  ))}
+                      {`${
+                        viewMoreReplies
+                          ? `Hide ${replies.length} replies`
+                          : `View ${replies.length} replies`
+                      }`}
+                    </button>
+                  ) : null}
+
+                  {viewMoreReplies
+                    ? replies.map((reply) => (
+                        <li
+                          key={reply.id}
+                          className="flex flex-col gap-2 text-[1rem] my-2"
+                        >
+                          <div className="flex gap-2">
+                            <Gravatar
+                              email={`${postId}@mail.com`}
+                              className="h-[20px] w-[20px] rounded-full"
+                            />{' '}
+                            <span className="text-[12px] text-gray-400 my-0 p-0 inline-block">
+                              {formatDistance(new Date(createdAt), new Date(), {
+                                addSuffix: true,
+                              })}
+                            </span>
+                          </div>
+                          <p className="my-0 p-0 inline-block pl-7">
+                            {reply.body}
+                          </p>
+                        </li>
+                      ))
+                    : null}
                 </div>
               </div>
             </div>
