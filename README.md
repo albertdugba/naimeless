@@ -15,7 +15,7 @@ Visit [google.com](https://google.com)
 
 ## About The App
 
-Aveu is a anonymous web platform where users can create posts anonymously, interact and create a community of anonymous users online
+Anonymous web platform where users can create posts anonymously, interact and create a community of anonymous users online
 
 ## Technologies
 
@@ -36,12 +36,6 @@ Aveu is a anonymous web platform where users can create posts anonymously, inter
 
 🟠 In Progress...
 
-## Credits
-
-List of contriubutors:
-
-- [John Doe](johndoe.com)
-- [Beginners guide to BEM](link-goes-here.com)
 
 ## License
 
