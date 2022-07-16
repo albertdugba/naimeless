@@ -11,6 +11,7 @@ export const CommentList: FC<CommentListProps> = ({ commnents }) => {
     <GenericList data={commnents}>
       {(comment) => (
         <SingleComment
+          replies={comment.replies}
           message={comment.message}
           commentId={comment.id}
           postId={comment.postId}

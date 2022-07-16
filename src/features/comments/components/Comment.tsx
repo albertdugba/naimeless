@@ -1,22 +1,27 @@
 import { formatDistance } from 'date-fns'
-import { FC, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import Gravatar from 'react-gravatar'
 import * as Icons from '@icons/index'
+import { Reply } from '../interface/comment'
+import { Button } from '@elements/Button'
 
 interface CommentProps {
   message: string
   commentId: number
   postId: number
   createdAt: Date
+  replies: Reply[]
 }
 export const SingleComment: FC<CommentProps> = ({
   message,
   postId,
   createdAt,
+  replies,
 }) => {
   const [toggledInput, setToggledInput] = useState(false)
+  const [reply, setReply] = useState('')
   return (
-    <li className="list-none my-2">
+    <li className="list-none my-2 relative">
       <div className="">
         <div className="flex gap-2">
           <Gravatar
@@ -57,13 +62,37 @@ export const SingleComment: FC<CommentProps> = ({
             </div>
 
             {/* replies */}
-            <div className="w-full">
+            <div className="w-full flex mt-2 gap-4">
               {toggledInput && (
-                <input
-                  type="text"
-                  className="border py-3 px-3 rounded-md w-full"
-                />
+                <div className="flex gap-3 w-full">
+                  <Gravatar
+                    email={`${postId}@mail.com`}
+                    className="h-[20px] w-[20px] rounded-full"
+                  />
+                  <div className="flex flex-col w-full gap-2">
+                    <textarea
+                      value={reply}
+                      onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                        setReply(e.target.value)
+                      }
+                      className="border px-2 py-4 rounded-md w-full outline-none text-gray-500"
+                    />
+                    <div className="flex justify-end">
+                      <Button variant="primary" size="small">
+                        <div className="whitespace-nowrap px-4 py-1">Reply</div>
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               )}
+
+              <div>
+                {replies.map((reply) => (
+                  <li key={reply.id} className="pl-8">
+                    {reply.body}
+                  </li>
+                ))}
+              </div>
             </div>
           </div>
         </div>
