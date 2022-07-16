@@ -37,14 +37,3 @@ a {
   max-width: 1256px;
   margin: auto;
 }
-
-/* comment */
-.comment-thread {
-  width: 700px;
-  max-width: 100%;
-  margin: 20px auto;
-  padding: 0 30px;
-  background-color: #fff;
-  border: 1px solid transparent;
-  position: relative;
-}

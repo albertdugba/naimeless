@@ -56,7 +56,7 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
           </Modal.Footer>
         </StyledModal>
       </Modal>
-      <div className="my-3">
+      <div className="my-1">
         <PostCard>
           <div className="w-full">
             <div className="w-full flex gap-8 justify-between">
