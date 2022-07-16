@@ -11,6 +11,7 @@ export const AddComment: FC<Props> = ({ postId }) => {
   const [commentVal, setCommentVal] = useState('')
 
   const queryClient = useQueryClient()
+  
   const addComment = (
     postId: string | number,
     data: { message: string; postId: number }
@@ -54,7 +55,7 @@ export const AddComment: FC<Props> = ({ postId }) => {
               handleAddComment.mutate({ message: commentVal, postId })
             }
           >
-            <div className="whitespace-nowrap px-4 py-1">Add comment</div>
+            <div className="whitespace-nowrap px-4 py-1">Post comment</div>
           </Button>
         </div>
       </div>

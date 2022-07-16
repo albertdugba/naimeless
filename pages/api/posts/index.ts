@@ -15,7 +15,6 @@ export default function withPrismaClient(
         vote: true,
         comments: {
           include: { replies: true },
-          orderBy: [{ createdAt: 'desc' }],
         },
       },
     })

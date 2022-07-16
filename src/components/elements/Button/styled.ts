@@ -23,7 +23,7 @@ export const StyledButton = styled.button<ButtonProps<'button'>>`
     props.variant === 'secondary'
       ? `10px solid ${colors.purple[200]}`
       : '1px solid inherit'};
-  border-radius: 4px;
+  border-radius: 20px;
   min-width: ${(props) =>
     props.fullWidth
       ? '100%'
