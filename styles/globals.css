@@ -30,7 +30,8 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family: 'Euclid Circular A' !important;
+  font-family: 'Cera Pro Regular', sans-serif !important;
+  font-weight: bolder;
 }
 
 .container {

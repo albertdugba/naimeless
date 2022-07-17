@@ -1,17 +1,10 @@
 import { useEffect, useState } from 'react'
 import Gravatar from 'react-gravatar'
-import { formatDistance } from 'date-fns'
-import {
-  useGetAllPosts,
-  useGetSinglePost,
-  useUpvotePost,
-} from '@features/post/api'
+import { useGetAllPosts, useGetSinglePost } from '@features/post/api'
 import { useDeletePost } from '@features/post/api'
 import { Post } from '../interface/post'
 import { Modal } from '@Modal/modal'
 import { StyledModal } from './style'
-import { Button } from '@elements/Button'
-import { PostCard } from '@elements/Card'
 import { getLayout } from '@layout'
 import { CreatePost } from './CreatePost'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -19,7 +12,6 @@ import { Posts } from '.'
 
 export const Feed = () => {
   const [openModal, setOpenModal] = useState(false)
-  const [deletePostModal, setDeletePostModal] = useState(false)
   const [selectPost, setSelectPost] = useState<Post>()
   const [postModal, setPostModal] = useState(false)
 
@@ -29,24 +21,6 @@ export const Feed = () => {
 
   console.log('allPosts', allPosts)
 
-  const deletePost = useDeletePost()
-
-  const handleDeletePost = () => {
-    if (selectPost?.id) {
-      deletePost.mutate({ id: selectPost?.id.toString() })
-    }
-  }
-
-  const handleDeleteModal = (post: Post) => {
-    setSelectPost(post)
-    setDeletePostModal(true)
-  }
-
-  useEffect(() => {
-    if (deletePost.isSuccess || deletePost.isError) {
-      setDeletePostModal(false)
-    }
-  }, [deletePost.isError, deletePost.isSuccess])
   return (
     <>
       <div>
