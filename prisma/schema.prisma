@@ -25,7 +25,7 @@ model Comment {
   id        Int      @id @default(autoincrement())
   message   String
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
+  updatedAt DateTime @default(now()) @updatedAt()
   post      Post?    @relation(fields: [postId], references: [id])
   postId    Int?
   replies   Reply[]
@@ -33,13 +33,12 @@ model Comment {
 }
 
 model Reply {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt()
   body      String
-  comment   Comment  @relation(fields: [commentId], references: [id])
+  comment   Comment   @relation(fields: [commentId], references: [id])
   commentId Int
-
 }
 
 model Vote {
