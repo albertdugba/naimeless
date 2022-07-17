@@ -7,7 +7,7 @@ export interface Comments extends BaseEntity {
   replies: Reply[]
 }
 
-export interface Reply {
+export interface Reply extends BaseEntity {
   id: number
   commentId: number
   body: string

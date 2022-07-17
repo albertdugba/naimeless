@@ -9,6 +9,7 @@ import { useDeletePost } from '../api'
 import { Modal } from '@Modal/modal'
 import { Button } from '@elements/Button'
 import { StyledModal } from './style'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface PostProps {
   post: SinglePostTypes
@@ -56,7 +57,7 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
           </Modal.Footer>
         </StyledModal>
       </Modal>
-      <div className="my-1">
+      <div className="my-2">
         <PostCard>
           <div className="w-full">
             <div className="w-full flex gap-8 justify-between">
@@ -148,15 +149,29 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
                 </div>
 
                 {/* comments section */}
-                {toggleCommentBox ? (
-                  <>
-                    <div className="flex items-center h-full justify-center w-full">
+                <AnimatePresence initial={false}>
+                  {toggleCommentBox ? (
+                    <motion.div
+                      key="content"
+                      initial="collapsed"
+                      animate="open"
+                      exit="collapsed"
+                      variants={{
+                        open: { opacity: 1, height: 'auto' },
+                        collapsed: { opacity: 0, height: 0 },
+                      }}
+                      transition={{
+                        duration: 0.8,
+                        ease: [0.04, 0.62, 0.23, 0.98],
+                      }}
+                      className="flex flex-col ite h-full justify-center w-full"
+                    >
                       <span className="w-full border-b my-4"></span>
-                    </div>
-                    <AddComment postId={post.id} />
-                    <CommentList commnents={post.comments} />
-                  </>
-                ) : null}
+                      <AddComment postId={post.id} />
+                      <CommentList commnents={post.comments} />
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
               </div>
             </div>
           </div>
