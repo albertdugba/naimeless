@@ -77,7 +77,7 @@ export const Feed = () => {
           arial-label="Create Post"
           autoFocus={false}
           onClick={() => setOpenModal(true)}
-          className="px-2 py-3 rounded-full w-full outline-none bg-gray-100 cursor-pointer"
+          className="px-3 py-3 rounded-full w-full outline-none bg-gray-100 cursor-pointer"
         />
       </div>
       <AnimatePresence>

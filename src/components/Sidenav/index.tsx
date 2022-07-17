@@ -9,7 +9,7 @@ export const SideNav = () => {
           {channels.map((ch, index) => (
             <li key={index} className="flex items-center justify-between my-4">
               <span className="capitalize">{ch}</span>
-              <button className="border rounded-md px-2 py-0 text-gray-500 uppercase">
+              <button className="border rounded-full px-2 py-0 text-gray-500 uppercase">
                 <span className="text-sm">Join</span>
               </button>
             </li>
@@ -22,7 +22,7 @@ export const SideNav = () => {
         {channels.map((ch, index) => (
           <li key={index} className="flex items-center justify-between my-4">
             <span className="capitalize">{ch}</span>
-            <button className="border rounded-md px-2 py-0 text-gray-500 uppercase">
+            <button className="border rounded-full px-2 py-0 text-gray-500 uppercase">
               <span className="text-sm">Join</span>
             </button>
           </li>

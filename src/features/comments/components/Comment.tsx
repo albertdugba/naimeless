@@ -136,13 +136,17 @@ export const SingleComment: FC<CommentProps> = ({
                         >
                           <div className="flex gap-2">
                             <Gravatar
-                              email={`${postId}@mail.com`}
+                              email={`${reply.commentId}@mail.com`}
                               className="h-[20px] w-[20px] rounded-full"
                             />{' '}
                             <span className="text-[12px] text-gray-400 my-0 p-0 inline-block">
-                              {formatDistance(new Date(createdAt), new Date(), {
-                                addSuffix: true,
-                              })}
+                              {formatDistance(
+                                new Date(reply?.createdAt),
+                                new Date(),
+                                {
+                                  addSuffix: true,
+                                }
+                              )}
                             </span>
                           </div>
                           <p className="my-0 p-0 inline-block pl-7">
