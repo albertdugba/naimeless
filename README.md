@@ -1,8 +1,7 @@
-# Aveu
+# Nameless
 
 ## Demo link:
 
-Visit [google.com](https://google.com)
 
 ## Table of Content:
 
