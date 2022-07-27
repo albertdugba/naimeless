@@ -14,7 +14,7 @@ export const addCommentReply = ({
   return axios.post(`/api/posts/${commentId}/add-reply`, { commentId, body })
 }
 
-export const useAddCommentReply = (postId?: number) => {
+export const useAddCommentReply = () => {
   const queryClient = useQueryClient()
   return useMutation((data: IReply) => addCommentReply(data), {
     onSuccess: () => {

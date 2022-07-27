@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Gravatar from 'react-gravatar'
 import { useGetAllPosts, useGetSinglePost } from '@features/post/api'
-import { useDeletePost } from '@features/post/api'
 import { Post } from '../interface/post'
 import { Modal } from '@Modal/modal'
 import { StyledModal } from './style'
@@ -9,6 +8,7 @@ import { getLayout } from '@layout'
 import { CreatePost } from './CreatePost'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Posts } from '.'
+import { randomBgColorGenerator } from 'src/lib/server/helpers'
 
 export const Feed = () => {
   const [openModal, setOpenModal] = useState(false)
@@ -19,7 +19,9 @@ export const Feed = () => {
   const postId = Number(selectPost?.id)
   const post = useGetSinglePost(postId)
 
-  console.log('allPosts', allPosts)
+  const colors = ['red', 'blue', 'teal', 'orange']
+  const colours = randomBgColorGenerator(colors)
+  console.log('colours', colours)
 
   return (
     <>
