@@ -6,6 +6,7 @@ import { Reply } from '../interface/comment'
 import { Button } from '@elements/Button'
 import { useAddCommentReply } from '@features/replies/api/addReply'
 import { motion, AnimatePresence } from 'framer-motion'
+import { randomBgColorGenerator } from 'src/lib/server/helpers'
 
 interface CommentProps {
   message: string
@@ -24,9 +25,9 @@ export const SingleComment: FC<CommentProps> = ({
   const [toggledInput, setToggledInput] = useState(false)
   const [reply, setReply] = useState('')
   const [viewMoreReplies, setViewMoreReplies] = useState(false)
-
-  const createReply = useAddCommentReply(postId)
-
+  const randColor = randomBgColorGenerator(['purple', 'pink', 'teal', 'orange'])
+  const createReply = useAddCommentReply()
+  console.log('randColor', randColor)
   const handleAddReply = () => {
     createReply.mutate({ body: reply, commentId })
   }
@@ -40,9 +41,13 @@ export const SingleComment: FC<CommentProps> = ({
       >
         <div className="">
           <div className="flex gap-2">
-            <Gravatar
-              email={`${postId}@mail.com`}
-              className="h-[20px] w-[20px] rounded-full"
+            <div
+              style={{
+                backgroundColor: randColor,
+                height: 35,
+                width: 35,
+                borderRadius: '50%',
+              }}
             />
 
             <div className="flex flex-col gap-2 w-full">
@@ -84,9 +89,13 @@ export const SingleComment: FC<CommentProps> = ({
                 <div className="w-full flex-col flex mt-2 gap-4">
                   {toggledInput && (
                     <div className="flex gap-3 w-full">
-                      <Gravatar
-                        email={`${postId}@mail.com`}
-                        className="h-[20px] w-[20px] rounded-full"
+                      <div
+                        style={{
+                          backgroundColor: randColor,
+                          height: 20,
+                          width: 20,
+                          borderRadius: '50%',
+                        }}
                       />
                       <div className="flex flex-col w-full gap-2">
                         <textarea
@@ -153,10 +162,14 @@ export const SingleComment: FC<CommentProps> = ({
                               className="flex flex-col gap-2 text-[1rem] my-2"
                             >
                               <div className="flex gap-2">
-                                <Gravatar
-                                  email={`${reply.commentId}@mail.com`}
-                                  className="h-[20px] w-[20px] rounded-full"
-                                />{' '}
+                                <div
+                                  style={{
+                                    backgroundColor: randColor,
+                                    height: '20',
+                                    width: 20,
+                                    borderRadius: '50%',
+                                  }}
+                                />
                                 <span className="text-[12px] text-gray-400 my-0 p-0 inline-block">
                                   {formatDistance(
                                     new Date(reply?.createdAt),
