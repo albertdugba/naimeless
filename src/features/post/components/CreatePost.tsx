@@ -87,13 +87,17 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
                 <ul>
                   {channels.map((channel) => (
                     <li
+                      aria-label="available channels"
                       onClick={() => handleSelectChannel(channel.val)}
                       key={channel.id}
                       className={`flex items-center justify-between px-3 py-3 hover:bg-gray-200 cursor-pointer rounded-[5px] w-full transition-all my-2 ${
                         selectedChannel === channel.val ? 'bg-gray-200' : ''
                       }`}
                     >
-                      <div className="flex items-center gap-2">
+                      <div
+                        data-testid="singleChannel"
+                        className="flex items-center gap-2"
+                      >
                         <Gravartar
                           className="h-[25px] w-[25px] rounded-full"
                           email={channel.val?.toLocaleLowerCase()}
@@ -140,7 +144,7 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
                       className="flex text-[12px] items-center gap-[5px] bg-purple-200 p-[4px] rounded-[4px] cursor-pointer"
                     >
                       <People />
-                      <span>
+                      <span data-testid="channel">
                         @
                         {selectedChannel
                           ? selectedChannel.toLocaleLowerCase()

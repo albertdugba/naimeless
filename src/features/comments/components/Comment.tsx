@@ -1,6 +1,5 @@
 import { formatDistance } from 'date-fns'
 import { ChangeEvent, FC, useState } from 'react'
-import Gravatar from 'react-gravatar'
 import * as Icons from '@icons/index'
 import { Reply } from '../interface/comment'
 import { Button } from '@elements/Button'
@@ -28,6 +27,7 @@ export const SingleComment: FC<CommentProps> = ({
   const randColor = randomBgColorGenerator(['purple', 'pink', 'teal', 'orange'])
   const createReply = useAddCommentReply()
   console.log('randColor', randColor)
+
   const handleAddReply = () => {
     createReply.mutate({ body: reply, commentId })
   }

@@ -2,7 +2,6 @@ import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { Button } from '@elements/Button'
 import { useMutation, useQueryClient } from 'react-query'
 import axios from 'axios'
-import Gravatar from 'react-gravatar'
 import { randomBgColorGenerator } from 'src/lib/server/helpers'
 
 interface Props {
@@ -39,8 +38,8 @@ export const AddComment: FC<Props> = ({ postId }) => {
       <div
         style={{
           backgroundColor: randColor,
-          height: 35,
-          width: 35,
+          height: '35px',
+          width: '35px',
           borderRadius: '100%',
         }}
       />
