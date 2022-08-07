@@ -20,6 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     'orange',
   ])
   const { email, password } = req.body
+
   let user
 
   try {
