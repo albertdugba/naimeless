@@ -13,6 +13,9 @@ export default function withPrismaClient(
       include: {
         photos: true,
         vote: true,
+        user: {
+          select: { id: true, avatarColor: true },
+        },
         comments: {
           include: { replies: true },
         },

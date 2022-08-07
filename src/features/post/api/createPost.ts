@@ -18,6 +18,7 @@ export const useCreatePost = () => {
       published: boolean
       author: string
       channelName: string
+      userId: number
     }) =>
       axios({
         url: `/api/posts/create`,
