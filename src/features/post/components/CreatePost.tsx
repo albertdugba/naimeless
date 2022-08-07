@@ -52,6 +52,7 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
       published: true,
       author: 'nbvbn',
       channelName: selectedChannel,
+      userId: 1,
     })
   }
 

@@ -1,4 +1,5 @@
 import { Comments } from '@features/comments/interface/comment'
+import { IUser } from '@features/user/api/interface'
 import { BaseEntity } from 'src/types'
 
 export interface Post extends BaseEntity {
@@ -10,6 +11,7 @@ export interface Post extends BaseEntity {
   photos: Photo[]
   vote: Vote[]
   comments: Comments[]
+  user: IUser
 }
 
 interface Vote extends BaseEntity {
