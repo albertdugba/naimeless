@@ -42,7 +42,10 @@ export const Feed = () => {
         </Modal>
         <CreatePost openModal={openModal} setOpenModal={setOpenModal} />
       </div>
-      <div className="flex items-center gap-4 ml-1 mr-1 bg-white p-6 rounded-[8px] mt-8 border">
+      <div
+        style={{ boxShadow: '0 0 8px 0 rgba(0, 0, 0, 0.14)' }}
+        className="flex items-center gap-4 ml-1 mr-1 bg-white p-6 rounded-[8px] mt-8 border"
+      >
         <Gravatar
           email="discord.com"
           className="w-[40px] h-[40px] rounded-full"

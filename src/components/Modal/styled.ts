@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const StyledModalInner = styled(motion.div)`
   position: fixed;
-  top: 17%;
+  top: 10%;
   left: 0;
   right: 0;
   width: 100%;
@@ -12,13 +12,14 @@ const StyledModalInner = styled(motion.div)`
   margin: auto;
   border-radius: 9px;
   overflow-y: scroll;
+  transform: translate(-50%, 0);
 
   @media (max-width: 801px) {
     width: 90%;
   }
 `
 
-const StyledOverlay = styled.div`
+const StyledOverlay = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;

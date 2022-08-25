@@ -3,7 +3,29 @@ import { Content, ModalContentProps } from './Content'
 import { Header, ModalHeaderProps } from './Header'
 import { Footer, ModalFooterProps } from './Footer'
 import { StyledModalInner, StyledOverlay } from './styled'
-import { AnimatePresence, motion } from 'framer-motion'
+
+const Backdrop = ({
+  children,
+  isOpen,
+}: {
+  children: ReactNode
+  isOpen: boolean
+}) => {
+  return (
+    <>
+      {isOpen ? (
+        <StyledOverlay
+          className="backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          {children}
+        </StyledOverlay>
+      ) : null}
+    </>
+  )
+}
 
 interface ModalComposition {
   Header: FC<ModalHeaderProps>
@@ -35,14 +57,42 @@ export const Modal: FC<ModalProps> & ModalComposition = ({
     [isOpen, setIsOpen]
   )
 
+  const gifYouUp = {
+    hidden: {
+      opacity: 0,
+      scale: 0,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.2,
+        ease: 'easeIn',
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0,
+      transition: {
+        duration: 0.15,
+        ease: 'easeOut',
+      },
+    },
+  }
+
   return (
     <ModalContext.Provider value={memoisedVal}>
-      <AnimatePresence>
-        <motion.div>
-          {isOpen && <StyledOverlay />}
-          {isOpen && <StyledModalInner>{children}</StyledModalInner>}
-        </motion.div>
-      </AnimatePresence>
+      <Backdrop isOpen={isOpen}>
+        <StyledModalInner
+          className="modal"
+          variants={gifYouUp}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          {children}
+        </StyledModalInner>
+      </Backdrop>
     </ModalContext.Provider>
   )
 }

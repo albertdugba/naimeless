@@ -8,9 +8,10 @@ const StyledSidenav = styled.aside`
   position: fixed;
   top: 50px;
   width: 20rem;
-  /* background: ${colors.neutral[100]}; */
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.14);
+  border-right: 1px solid ${colors.neutral[300]};
+  background: #fff;
   padding: 1.2rem;
-  /* border-right: 1px solid ${colors.neutral[300]}; */
   display: none;
   @media (min-width: 701px) {
     display: block;
