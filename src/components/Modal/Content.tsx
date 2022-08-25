@@ -9,7 +9,7 @@ export const Content: FC<ModalContentProps> = ({ children }) => {
 }
 
 const ModalContent = styled.main`
-  max-height: 60vh;
+  max-height: 68vh;
   padding: 1rem;
   overflow-y: scroll;
 `

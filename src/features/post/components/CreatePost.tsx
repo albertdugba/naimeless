@@ -67,8 +67,8 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
   }
   return (
     <>
-      {inView === 'channels' ? (
-        <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
+      <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
+        {inView === 'channels' ? (
           <AnimatePresence>
             <StyledModal layoutId="channels">
               <div className="border-b">
@@ -112,9 +112,7 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
               </Modal.Content>
             </StyledModal>
           </AnimatePresence>
-        </Modal>
-      ) : (
-        <div>
+        ) : (
           <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
             <StyledModal>
               <div className="border-b">
@@ -171,8 +169,8 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
               </Modal.Footer>
             </StyledModal>
           </Modal>
-        </div>
-      )}
+        )}
+      </Modal>
     </>
   )
 }

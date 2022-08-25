@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react'
 import styled from 'styled-components'
-import { colors } from '../../utils'
 
 export interface ModalFooterProps {
   children: ReactNode
