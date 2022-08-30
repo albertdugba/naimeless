@@ -18,7 +18,7 @@ describe('Feeds Page', () => {
   })
 
   it('Should find and select a channel', () => {
-    cy.findByTestId('select-options').find('li').click()
+    cy.findByTestId('select-options').find('li').first().click()
   })
 })
 
