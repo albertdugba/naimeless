@@ -27,7 +27,7 @@ model Post {
   author      String
   channelName String?
   photos      Photo[]
-  vote        Vote?
+  vote        Vote[]
   comments    Comment[]
   user        User?     @relation(fields: [userId], references: [id])
   userId      Int?
@@ -54,13 +54,11 @@ model Reply {
 }
 
 model Vote {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt()
-  postId    Int      @unique
-  post      Post     @relation(fields: [postId], references: [id])
-  isUpvote  Boolean
-  value     Int      @default(0)
+  id       Int     @id @default(autoincrement())
+  postId   Int
+  post     Post    @relation(fields: [postId], references: [id])
+  isUpvote Boolean
+  vote     Int     @default(0)
 }
 
 model Photo {

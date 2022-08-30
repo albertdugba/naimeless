@@ -9,9 +9,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).end()
   }
   const { message, postId } = req.body
-  const data = req.body
-
-  console.log('comment payload', data)
 
   async function main() {
     if (!message) {

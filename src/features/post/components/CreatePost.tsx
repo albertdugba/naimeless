@@ -85,10 +85,10 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
                 </Modal.Header>
               </div>
               <Modal.Content>
-                <ul>
+                <ul data-testid="select-options">
                   {channels.map((channel) => (
                     <li
-                      aria-label="available channels"
+                      aria-label={channel.val}
                       onClick={() => handleSelectChannel(channel.val)}
                       key={channel.id}
                       className={`flex items-center justify-between px-3 py-3 hover:bg-gray-200 cursor-pointer rounded-[5px] w-full transition-all my-2 ${
@@ -96,7 +96,7 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
                       }`}
                     >
                       <div
-                        data-testid="singleChannel"
+                        data-testid={`singleChannel-${0}`}
                         className="flex items-center gap-2"
                       >
                         <Gravartar

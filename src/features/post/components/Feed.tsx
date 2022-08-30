@@ -47,7 +47,7 @@ export const Feed = () => {
         className="flex items-center gap-4 ml-1 mr-1 bg-white p-6 rounded-[8px] mt-8 border"
       >
         <Gravatar
-          email="discord.com"
+          email="@naimeless"
           className="w-[40px] h-[40px] rounded-full"
         />
         <input
@@ -64,7 +64,10 @@ export const Feed = () => {
           {isLoading
             ? 'loading'
             : isSuccess && (
-                <motion.div>
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                >
                   <Posts posts={allPosts} />
                 </motion.div>
               )}
