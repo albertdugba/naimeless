@@ -11,8 +11,10 @@ export default function withPrismaClient(
     const posts = await prisma.post.findMany({
       orderBy: [{ createdAt: 'desc' }],
       include: {
+        _count: {
+          select: { vote: true },
+        },
         photos: true,
-        vote: true,
         user: {
           select: { id: true, avatarColor: true },
         },
@@ -21,6 +23,7 @@ export default function withPrismaClient(
         },
       },
     })
+
     return res.status(200).json(posts)
   }
 

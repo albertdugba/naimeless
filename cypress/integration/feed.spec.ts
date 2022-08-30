@@ -18,6 +18,18 @@ describe('Feeds Page', () => {
   })
 
   it('Should find and select a channel', () => {
-    cy.get('.Content__ModalContent-sc-1owb0u6-0 > ul > :nth-child(2)').click()
+    cy.findByTestId('select-options').find('li').first().click()
+  })
+})
+
+describe('Feed Content', () => {
+  it('Create post', () => {
+    cy.findByPlaceholderText(/Whats happening ?/i).type(
+      'This is my first post from cypress. I think its awesome'
+    )
+  })
+
+  it('Submit post', () => {
+    cy.findByRole('button', { name: /post/i }).click()
   })
 })

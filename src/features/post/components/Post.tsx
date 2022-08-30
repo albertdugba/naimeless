@@ -20,6 +20,8 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
   const [deletePostModal, setDeletePostModal] = useState(false)
   const [selectPost, setSelectPost] = useState<Post>()
 
+  // votesCount = 12
+
   const deletePost = useDeletePost()
 
   const handleDeletePost = () => {
