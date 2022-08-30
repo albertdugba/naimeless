@@ -8,13 +8,18 @@ export default function withPrismaClient(
   res: NextApiResponse
 ) {
   async function main() {
+    // const voteCount = await prisma.vote.aggregate({
+    //   _sum: {
+    //     vote: true,
+    //   },
+    // })
+
+    // console.log('voteCount', voteCount)
+
     const posts = await prisma.post.findMany({
       orderBy: [{ createdAt: 'desc' }],
       include: {
-        _count: {
-          select: { vote: true },
-        },
-        photos: true,
+        vote: { select: { vote: true } },
         user: {
           select: { id: true, avatarColor: true },
         },

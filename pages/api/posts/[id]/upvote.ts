@@ -14,8 +14,9 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   console.log('isUpvote', isUpvote)
 
   async function main() {
+    const voteValue: number = isUpvote ? 1 : -1
     const vote = await prisma.vote.create({
-      data: { postId, isUpvote, vote: 1 },
+      data: { postId, isUpvote, vote: voteValue },
     })
     return res.status(200).json({ msg: 'Post upvoted successfully', vote })
   }
