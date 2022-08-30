@@ -18,6 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     'pink',
     'teal',
     'orange',
+    'blue',
   ])
   const { email, password } = req.body
 
