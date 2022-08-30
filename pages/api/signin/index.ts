@@ -32,7 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         secure: process.env.NODE_ENV === 'production',
       })
     )
-    res.json(user)
+    res.json({ user, token })
   } else {
     res.status(401)
     res.json({ message: 'Email or password is wrong' })
