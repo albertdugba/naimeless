@@ -1,4 +1,4 @@
-import { validateRoute } from 'src/lib/server/helpers/validationRoute'
+import { validateRoute } from 'src/lib/server'
 
 export default validateRoute((req, res, user) => {
   console.log(res)

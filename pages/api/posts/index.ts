@@ -1,21 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next/types'
 import { PrismaClient } from '@prisma/client'
+import { validateRoute } from 'src/lib/server'
 
 const prisma = new PrismaClient()
 
-export default function withPrismaClient(
-  _: NextApiRequest,
-  res: NextApiResponse
-) {
-  async function main() {
-    // const voteCount = await prisma.vote.aggregate({
-    //   _sum: {
-    //     vote: true,
-    //   },
-    // })
-
-    // console.log('voteCount', voteCount)
-
+export default validateRoute(
+  async (_: NextApiRequest, res: NextApiResponse, user) => {
+    console.log('adsf', user)
     const posts = await prisma.post.findMany({
       orderBy: [{ createdAt: 'desc' }],
       include: {
@@ -31,12 +22,4 @@ export default function withPrismaClient(
 
     return res.status(200).json(posts)
   }
-
-  main()
-    .catch((e) => {
-      throw e
-    })
-    .finally(async () => {
-      await prisma.$disconnect()
-    })
-}
+)

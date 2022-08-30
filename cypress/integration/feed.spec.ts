@@ -22,7 +22,7 @@ describe('Feeds Page', () => {
   })
 })
 
-describe('Feed Content', () => {
+describe('Post', () => {
   it('Create post', () => {
     cy.findByPlaceholderText(/Whats happening ?/i).type(
       'This is my first post from cypress. I think its awesome'
