@@ -136,7 +136,7 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
                   </div>
                   <div className="p-0">
                     <button
-                      data-testId="commentHandle"
+                      data-testid="commentHandle"
                       onClick={() => setToggleCommentBox((val) => !val)}
                       className="flex items-center gap-1 cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all"
                     >

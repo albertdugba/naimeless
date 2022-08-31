@@ -1,3 +1,4 @@
+import { IUser } from '@features/user/api/interface'
 import { BaseEntity } from 'src/types'
 
 export interface Comments extends BaseEntity {
@@ -5,6 +6,7 @@ export interface Comments extends BaseEntity {
   postId: number
   id: number
   replies: Reply[]
+  user: IUser
 }
 
 export interface Reply extends BaseEntity {

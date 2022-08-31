@@ -10,8 +10,8 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   }
   // const postId: number = parseInt(String(req.query.id))
   const { postId, isUpvote } = req.body
-  console.log('postId', postId)
-  console.log('isUpvote', isUpvote)
+  // console.log('postId', postId)
+  // console.log('isUpvote', isUpvote)
 
   async function main() {
     const voteValue: number = isUpvote ? 1 : -1

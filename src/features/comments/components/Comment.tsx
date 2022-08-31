@@ -5,7 +5,9 @@ import { Reply } from '../interface/comment'
 import { Button } from '@elements/Button'
 import { useAddCommentReply } from '@features/replies/api/addReply'
 import { motion, AnimatePresence } from 'framer-motion'
-import { randomBgColorGenerator } from 'src/lib/server/helpers'
+import { useGetProfile } from '@features/post/user/api'
+import { IUser } from '@features/post/user/interface'
+import Image from 'next/image'
 
 interface CommentProps {
   message: string
@@ -13,10 +15,11 @@ interface CommentProps {
   postId: number
   createdAt: Date
   replies: Reply[]
+  user: IUser
 }
 export const SingleComment: FC<CommentProps> = ({
   message,
-  postId,
+  user,
   createdAt,
   replies,
   commentId,
@@ -24,9 +27,7 @@ export const SingleComment: FC<CommentProps> = ({
   const [toggledInput, setToggledInput] = useState(false)
   const [reply, setReply] = useState('')
   const [viewMoreReplies, setViewMoreReplies] = useState(false)
-  const randColor = randomBgColorGenerator(['purple', 'pink', 'teal', 'orange'])
   const createReply = useAddCommentReply()
-  console.log('randColor', randColor)
 
   const handleAddReply = () => {
     createReply.mutate({ body: reply, commentId })
@@ -41,14 +42,26 @@ export const SingleComment: FC<CommentProps> = ({
       >
         <div className="">
           <div className="flex gap-2">
-            <div
-              style={{
-                backgroundColor: randColor,
-                height: 35,
-                width: 35,
-                borderRadius: '50%',
-              }}
-            />
+            <div className="w-[40px] h-[40px]">
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  backgroundColor: user?.avatarColor,
+                }}
+              >
+                <Image
+                  src="/icons/logo.svg"
+                  height={18}
+                  width={18}
+                  alt="User"
+                />
+              </div>
+            </div>
 
             <div className="flex flex-col gap-2 w-full">
               <span className="text-[12px] text-gray-400 my-0 p-0 inline-block">
@@ -89,14 +102,26 @@ export const SingleComment: FC<CommentProps> = ({
                 <div className="w-full flex-col flex mt-2 gap-4">
                   {toggledInput && (
                     <div className="flex gap-3 w-full">
-                      <div
-                        style={{
-                          backgroundColor: randColor,
-                          height: 20,
-                          width: 20,
-                          borderRadius: '50%',
-                        }}
-                      />
+                      <div className="w-[40px] h-[40px]">
+                        <div
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            width: '32px',
+                            height: '32px',
+                            borderRadius: '50%',
+                            backgroundColor: user?.avatarColor,
+                          }}
+                        >
+                          <Image
+                            src="/icons/logo.svg"
+                            height={18}
+                            width={18}
+                            alt="User"
+                          />
+                        </div>
+                      </div>
                       <div className="flex flex-col w-full gap-2">
                         <textarea
                           value={reply}
@@ -164,7 +189,7 @@ export const SingleComment: FC<CommentProps> = ({
                               <div className="flex gap-2">
                                 <div
                                   style={{
-                                    backgroundColor: randColor,
+                                    backgroundColor: user?.avatarColor,
                                     height: '20',
                                     width: 20,
                                     borderRadius: '50%',

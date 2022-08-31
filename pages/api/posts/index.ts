@@ -9,11 +9,8 @@ export default function (_: NextApiRequest, res: NextApiResponse) {
       orderBy: [{ createdAt: 'desc' }],
       include: {
         vote: { select: { vote: true } },
-        user: {
-          select: { id: true, avatarColor: true },
-        },
         comments: {
-          include: { replies: true },
+          include: { replies: true, user: true },
         },
       },
     })
