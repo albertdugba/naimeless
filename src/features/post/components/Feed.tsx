@@ -8,7 +8,7 @@ import { getLayout } from '@layout'
 import { CreatePost } from './CreatePost'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Posts } from '.'
-import { randomBgColorGenerator } from 'src/lib/server/helpers'
+import { useGetProfile } from '../user/api'
 
 export const Feed = () => {
   const [openModal, setOpenModal] = useState(false)
@@ -18,10 +18,8 @@ export const Feed = () => {
   const { post: allPosts, isLoading, isSuccess } = useGetAllPosts()
   const postId = Number(selectPost?.id)
   const post = useGetSinglePost(postId)
-
-  const colors = ['red', 'blue', 'teal', 'orange']
-  const colours = randomBgColorGenerator(colors)
-  console.log('colours', colours)
+  const { user } = useGetProfile()
+  console.log('userprofile', user)
 
   return (
     <>

@@ -1,16 +1,26 @@
 name: Run Cypress Tests
 on: push
+
 jobs:
   run-cypress:
-     name: Run Cypress
-     runs-on: ubuntu-latest
-     steps:
-       - name: Checkout
-         uses: actions/checkout@v2
+    name: Run Cypress
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-       - name: Cypress run
-         uses: cypress-io/github-action@v2
-         with:
-           build: yarn run build
-           start: yarn start
-           wait-on: "http://localhost:3000"
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          build: yarn run build
+          start: yarn start
+          wait-on: 'http://localhost:3000'
+          browser: 'Replay Chromium'
+        env:
+          RECORD_ALL_CONTENT: 1
+          RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
+      - name: Upload replays
+        if: ${{ always() }}
+        uses: replayio/action-upload@v0.4.3
+        with:
+          api-key: rwk_eNNuYsXE9015GM3YOLRIRsGYdRFRLVAJjrv7lh310cv

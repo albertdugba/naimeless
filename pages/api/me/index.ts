@@ -1,6 +1,6 @@
 import { validateRoute } from 'src/lib/server'
 
-export default validateRoute((req, res, user) => {
-  console.log(res)
-  res.json(user)
+export default validateRoute(async (req, res, user) => {
+  console.log('User profile', user)
+  await res.json(user)
 })

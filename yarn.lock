@@ -1689,6 +1689,15 @@
   resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-3.15.1-1.461d6a05159055555eb7dfb337c9fb271cbd4d7e.tgz#f691893df506b93e3cb1ccc15ec6e5ac64e8e570"
   integrity sha512-NHlojO1DFTsSi3FtEleL9QWXeSF/UjhCW0fgpi7bumnNZ4wj/eQ+BJJ5n2pgoOliTOGv9nX2qXvmHap7rJMNmg==
 
+"@replayio/cypress@^0.2.16":
+  version "0.2.16"
+  resolved "https://registry.yarnpkg.com/@replayio/cypress/-/cypress-0.2.16.tgz#55406c147073f56eca2925430fbd5fe20a7f336f"
+  integrity sha512-VKek8XAqPosXUOr7pGXa8DvymOMM92uZ+1fpHMzYVXWK2yZ4+ZgWb1GlTWokHrN4Ye11LTHRiDIx/na3BS4IzA==
+  dependencies:
+    "@replayio/replay" "^0.9.4"
+    "@replayio/test-utils" "^0.1.0"
+    uuid "^8.3.2"
+
 "@replayio/replay@^0.9.4":
   version "0.9.4"
   resolved "https://registry.yarnpkg.com/@replayio/replay/-/replay-0.9.4.tgz#c6bf1910c92e121fe38c41a9435c7bd45d9673a2"
@@ -1712,6 +1721,15 @@
     glob "^7.1.6"
     node-fetch "^2.6.1"
     string.prototype.matchall "^4.0.5"
+
+"@replayio/test-utils@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@replayio/test-utils/-/test-utils-0.1.0.tgz#1fb3555bfa24b7bcf439e30a53356517d1c34937"
+  integrity sha512-+T4xHVzuTGABpnoTz0/+6yIQfjZyXgxxI5T0HKqnRgxJTF8rjLBo5vYb0N8wcyv+k2m4FGWOQBtA9YXnZ8QXhQ==
+  dependencies:
+    "@replayio/replay" "^0.9.4"
+    node-fetch "^2.6.7"
+    uuid "^8.3.2"
 
 "@rushstack/eslint-patch@1.0.8":
   version "1.0.8"
@@ -5116,7 +5134,7 @@ cypress-log-to-output@^1.1.2:
     chalk "^2.4.2"
     chrome-remote-interface "^0.27.1"
 
-cypress@^9.5.4:
+cypress@^9.6.1:
   version "9.7.0"
   resolved "https://registry.yarnpkg.com/cypress/-/cypress-9.7.0.tgz#bf55b2afd481f7a113ef5604aa8b693564b5e744"
   integrity sha512-+1EE1nuuuwIt/N1KXRR2iWHU+OiIt7H28jJDyyI4tiUftId/DrXYEwoDa5+kH2pki1zxnA0r6HrUGHV5eLbF5Q==

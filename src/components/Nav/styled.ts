@@ -21,6 +21,7 @@ const StyledHeaderInner = styled.div`
   justify-content: space-between;
   background: #fff;
   padding-left: 10px;
+  height: 100%;
   padding-right: 10px;
 `
 

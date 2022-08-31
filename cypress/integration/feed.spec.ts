@@ -25,7 +25,7 @@ describe('Feeds Page', () => {
 describe('Post', () => {
   it('Create post', () => {
     cy.findByPlaceholderText(/Whats happening ?/i).type(
-      'This is my first post from cypress. I think its awesome'
+      'Replay.io is on to the next big thing'
     )
   })
 

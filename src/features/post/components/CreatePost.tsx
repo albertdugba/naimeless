@@ -120,6 +120,7 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
                   <div className="flex items-center justify-between w-full">
                     <span>Create Post</span>
                     <button
+                      data-testid="closeModalButton"
                       onClick={() => setOpenModal(false)}
                       arial-label="Close button icon"
                       className="flex items-center justify-center h-[35px] w-[35px] cursor-pointer bg-gray-200 rounded-full"
