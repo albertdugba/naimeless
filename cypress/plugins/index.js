@@ -1,4 +1,7 @@
+/* eslint-disable import/no-anonymous-default-export */
 /// <reference types="cypress" />
+
+import cypressReplay from '@replayio/cypress'
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
 //
@@ -16,9 +19,11 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
-module.exports = (on, config) => {
+export default (on, config) => {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   require('cypress-log-to-output').install(on)
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+
+  cypressReplay.default(on, config)
+
+  return config
 }
