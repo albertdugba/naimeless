@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write .",
+    "format": "prettier --write src/**",
     "cypress:open": "cypress open",
     "cy:run": "cypress run",
     "storybook": "start-storybook -p 6006",
