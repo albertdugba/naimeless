@@ -6,6 +6,7 @@ import { Button } from '@elements/Button'
 import { useAddCommentReply } from '@features/replies/api/addReply'
 import { motion, AnimatePresence } from 'framer-motion'
 import { randomBgColorGenerator } from 'src/lib/server/helpers'
+import { useGetProfile } from '@features/post/user/api'
 
 interface CommentProps {
   message: string
@@ -24,9 +25,8 @@ export const SingleComment: FC<CommentProps> = ({
   const [toggledInput, setToggledInput] = useState(false)
   const [reply, setReply] = useState('')
   const [viewMoreReplies, setViewMoreReplies] = useState(false)
-  const randColor = randomBgColorGenerator(['purple', 'pink', 'teal', 'orange'])
+  const { user } = useGetProfile()
   const createReply = useAddCommentReply()
-  console.log('randColor', randColor)
 
   const handleAddReply = () => {
     createReply.mutate({ body: reply, commentId })
@@ -43,7 +43,7 @@ export const SingleComment: FC<CommentProps> = ({
           <div className="flex gap-2">
             <div
               style={{
-                backgroundColor: randColor,
+                backgroundColor: user?.avatarColor,
                 height: 35,
                 width: 35,
                 borderRadius: '50%',
@@ -91,7 +91,7 @@ export const SingleComment: FC<CommentProps> = ({
                     <div className="flex gap-3 w-full">
                       <div
                         style={{
-                          backgroundColor: randColor,
+                          backgroundColor: user?.avatarColor,
                           height: 20,
                           width: 20,
                           borderRadius: '50%',
@@ -164,7 +164,7 @@ export const SingleComment: FC<CommentProps> = ({
                               <div className="flex gap-2">
                                 <div
                                   style={{
-                                    backgroundColor: randColor,
+                                    backgroundColor: user?.avatarColor,
                                     height: '20',
                                     width: 20,
                                     borderRadius: '50%',

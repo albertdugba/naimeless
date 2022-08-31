@@ -3,13 +3,14 @@ import { Button } from '@elements/Button'
 import { useMutation, useQueryClient } from 'react-query'
 import axios from 'axios'
 import { randomBgColorGenerator } from 'src/lib/server/helpers'
+import { useGetProfile } from '@features/post/user/api'
 
 interface Props {
   postId: number
 }
 export const AddComment: FC<Props> = ({ postId }) => {
   const [commentVal, setCommentVal] = useState('')
-  const randColor = randomBgColorGenerator(['purple', 'pink', 'teal', 'orange'])
+  const { user } = useGetProfile()
   const queryClient = useQueryClient()
 
   const addComment = (
@@ -37,7 +38,7 @@ export const AddComment: FC<Props> = ({ postId }) => {
     <div className="flex gap-2">
       <div
         style={{
-          backgroundColor: randColor,
+          backgroundColor: user?.avatarColor,
           height: '35px',
           width: '35px',
           borderRadius: '100%',
