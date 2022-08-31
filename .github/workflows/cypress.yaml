@@ -14,6 +14,7 @@ jobs:
         with:
           build: yarn run build
           start: yarn start
+          format: prettier --write .
           wait-on: 'http://localhost:3000'
           browser: 'Replay Chromium'
         env:
