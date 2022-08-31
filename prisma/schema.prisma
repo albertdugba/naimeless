@@ -16,7 +16,7 @@ model User {
   post        Post[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt()
-  Comment     Comment[]
+  comments    Comment[]
 }
 
 model Post {

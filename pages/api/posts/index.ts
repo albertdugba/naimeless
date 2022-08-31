@@ -10,7 +10,7 @@ export default function (_: NextApiRequest, res: NextApiResponse) {
       include: {
         vote: { select: { vote: true } },
         comments: {
-          include: { replies: true },
+          include: { replies: true, user: true },
         },
       },
     })

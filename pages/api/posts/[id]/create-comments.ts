@@ -20,7 +20,7 @@ export default validateRoute(
         return res.status(400).json({ message: 'All fields are required!' })
       }
       const comment = await prisma.comment.create({
-        data: { message, postId, user },
+        data: { message, postId, userId: user.id },
       })
       return res.status(200).json({ message: 'New comment added!', comment })
     }
