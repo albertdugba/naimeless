@@ -7,7 +7,7 @@ export default function showPostDetails(
   res: NextApiResponse
 ) {
   const id: number = parseInt(String(req.query.id))
-  
+
   async function main() {
     const data = await prisma.post.findUnique({
       where: { id },
