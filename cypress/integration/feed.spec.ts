@@ -4,7 +4,7 @@ export {}
 describe('Feeds Page', () => {
   it('Should route to the feeds page', () => {
     cy.visit('/')
-    cy.get('h1').should('contain', 'Logo')
+    cy.get('h1').should('contain', 'naimeless')
   })
 
   it('Should create post modal onClick', () => {

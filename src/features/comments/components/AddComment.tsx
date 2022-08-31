@@ -2,8 +2,8 @@ import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { Button } from '@elements/Button'
 import { useMutation, useQueryClient } from 'react-query'
 import axios from 'axios'
-import { randomBgColorGenerator } from 'src/lib/server/helpers'
 import { useGetProfile } from '@features/post/user/api'
+import Image from 'next/image'
 
 interface Props {
   postId: number
@@ -36,14 +36,21 @@ export const AddComment: FC<Props> = ({ postId }) => {
   }, [handleAddComment.isSuccess])
   return (
     <div className="flex gap-2">
-      <div
-        style={{
-          backgroundColor: user?.avatarColor,
-          height: '35px',
-          width: '35px',
-          borderRadius: '100%',
-        }}
-      />
+      <div className="w-[40px] h-[40px]">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '32px',
+            height: '32px',
+            borderRadius: '50%',
+            backgroundColor: user?.avatarColor,
+          }}
+        >
+          <Image src="/icons/logo.svg" height={18} width={18} alt="User" />
+        </div>
+      </div>
       <div className="flex flex-col w-full gap-2">
         <textarea
           value={commentVal}
