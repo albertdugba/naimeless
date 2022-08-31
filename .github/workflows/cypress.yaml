@@ -15,7 +15,7 @@ jobs:
           build: yarn run build
           start: yarn start
           wait-on: 'http://localhost:3000'
-          browser: 'Replay Firefox'
+          browser: 'Replay Chromium'
         env:
           RECORD_ALL_CONTENT: 1
           RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
