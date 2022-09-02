@@ -28,6 +28,7 @@ export const SingleComment: FC<CommentProps> = ({
   const [reply, setReply] = useState('')
   const [viewMoreReplies, setViewMoreReplies] = useState(false)
   const createReply = useAddCommentReply()
+  const { user: userProfile } = useGetProfile()
 
   const handleAddReply = () => {
     createReply.mutate({ body: reply, commentId })
@@ -42,7 +43,7 @@ export const SingleComment: FC<CommentProps> = ({
       >
         <div className="">
           <div className="flex gap-2">
-            <div className="w-[40px] h-[40px]">
+            <div className="">
               <div
                 style={{
                   display: 'flex',
@@ -64,11 +65,15 @@ export const SingleComment: FC<CommentProps> = ({
             </div>
 
             <div className="flex flex-col gap-2 w-full">
-              <span className="text-[12px] text-gray-400 my-0 p-0 inline-block">
-                {formatDistance(new Date(createdAt), new Date(), {
-                  addSuffix: true,
-                })}
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-400 text-sm">User</span>
+                <span className="h-[3px] w-[3px] rounded-full bg-gray-400"></span>
+                <span className="text-[12px] text-gray-400 my-0 p-0 inline-block">
+                  {formatDistance(new Date(createdAt), new Date(), {
+                    addSuffix: true,
+                  })}
+                </span>
+              </div>
               <div className="relative commentList">
                 {/* comment body */}
                 <p className="text-[1rem] p-0 -mt-1">{message}</p>
@@ -111,7 +116,7 @@ export const SingleComment: FC<CommentProps> = ({
                             width: '32px',
                             height: '32px',
                             borderRadius: '50%',
-                            backgroundColor: user?.avatarColor,
+                            backgroundColor: userProfile?.avatarColor,
                           }}
                         >
                           <Image
