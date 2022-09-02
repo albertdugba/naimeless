@@ -14,7 +14,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
   const salt = bycrupt.genSaltSync()
   const avatarColor = randomBgColorGenerator([
-    'purple',
+    'deeppink',
     'pink',
     'teal',
     'orange',
