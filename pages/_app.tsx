@@ -17,8 +17,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout =
-    Component.getLayout ?? ((page) => <MainLayout>{page}</MainLayout>)
+  const getLayout = Component.getLayout ?? ((children) => <>{children}</>)
   return getLayout(
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
