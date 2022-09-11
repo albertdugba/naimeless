@@ -1,6 +1,7 @@
 import { clsx } from 'clsx'
 import { ReactNode } from 'react'
 import { FieldError } from 'react-hook-form'
+import ExclamationIcon from '@icons/exclamation'
 
 type FieldWrapperProps = {
   label?: string
@@ -30,9 +31,9 @@ export const FieldWrapper = (props: FieldWrapperProps) => {
         <div
           role="alert"
           aria-label={error.message}
-          className="text-sm font-semibold text-red-500"
+          className="flex items-center gap-2 text-sm font-semibold text-red-500 mt-2"
         >
-          {error.message}
+          <ExclamationIcon /> {error.message}
         </div>
       )}
     </div>

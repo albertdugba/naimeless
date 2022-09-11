@@ -18,8 +18,8 @@ export const AuthModal: FC<AuthProps> = ({ openModal, setOpenModal }) => {
   const [password, setPassword] = useState('')
 
   const schema = z.object({
-    email: z.string().min(1, 'Required'),
-    password: z.string().min(1, 'Required'),
+    email: z.string().min(1, 'Email is Required'),
+    password: z.string().min(1, 'Password is Required'),
   })
 
   type LoginValues = {

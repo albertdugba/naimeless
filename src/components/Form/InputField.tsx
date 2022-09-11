@@ -16,8 +16,10 @@ export const InputField = (props: InputFieldProps) => {
       <input
         type={type}
         className={clsx(
-          `appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-600 focus:border-purple-600 sm:text-sm ${
-            error ? 'border border-red' : ''
+          `appearance-none block w-full px-3 py-2 border  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-600 focus:border-purple-600 sm:text-sm ${
+            error && error?.message
+              ? 'border border-red-500'
+              : 'border-gray-300'
           }`,
           className
         )}
