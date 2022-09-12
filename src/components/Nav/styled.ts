@@ -23,6 +23,7 @@ const StyledHeaderInner = styled.div`
   padding-left: 10px;
   height: 100%;
   padding-right: 10px;
+  position: relative;
 `
 
 export { StyledHeader, StyledHeaderInner }

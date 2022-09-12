@@ -30,8 +30,8 @@ a {
 
 * {
   box-sizing: border-box;
-  font-family: 'Cera Pro Regular', sans-serif !important;
-  font-weight: bolder;
+  font-family: 'Cera Pro Medium', sans-serif !important;
+  /* font-weight: bolder; */
 }
 
 .container {
