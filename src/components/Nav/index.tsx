@@ -1,11 +1,16 @@
+import { useState } from 'react'
 import { Button } from '../elements/Button'
 import { StyledHeader, StyledHeaderInner } from './styled'
 import { AuthModal } from '@elements/Modals/AuthModal'
-import { useState } from 'react'
 import Image from 'next/image'
+import { useGetProfile } from '@features/post/user/api'
+import { Dropdown } from '@Dropdown/Dropdown'
+import * as Icons from '@icons/index'
+import { Avatar } from '@Avatar'
 
 export const MainNavigation = () => {
   const [openModal, setOpenModal] = useState(false)
+  const { user } = useGetProfile()
   return (
     <StyledHeader>
       <AuthModal openModal={openModal} setOpenModal={setOpenModal} />
@@ -20,13 +25,31 @@ export const MainNavigation = () => {
           <span className="text-[#7453B2] font-bold">Naimeless</span>
         </h1>
 
-        <Button
-          onClick={() => setOpenModal(true)}
-          variant="primary"
-          size="medium"
-        >
-          Log In
-        </Button>
+        {user ? (
+          <Dropdown
+            title={<Avatar avatarColor={user?.avatarColor} />}
+            options={[
+              {
+                label: 'Edit Profile',
+                value: 'Profile',
+                icon: <Icons.People />,
+              },
+              {
+                label: 'Logout',
+                value: 'logout',
+                icon: <Icons.People />,
+              },
+            ]}
+          />
+        ) : (
+          <Button
+            onClick={() => setOpenModal(true)}
+            variant="primary"
+            size="medium"
+          >
+            Log In
+          </Button>
+        )}
       </StyledHeaderInner>
     </StyledHeader>
   )

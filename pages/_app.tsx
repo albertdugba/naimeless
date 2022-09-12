@@ -2,28 +2,37 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../src/utils'
-import { ReactElement, ReactNode } from 'react'
+import { Fragment, FunctionComponent, ReactElement, ReactNode } from 'react'
 import { MainLayout } from '../src/components/layout'
 import { QueryClientProvider, QueryClient } from 'react-query'
-import { NextPage } from 'next/types'
+import { NextComponentType, NextPage, NextPageContext } from 'next/types'
 
 const queryClient = new QueryClient()
 
-type NextPageWithLayout = NextPage & {
-  getLayout?: (page: ReactElement) => ReactNode
-}
+function MyApp({
+  Component,
+  pageProps,
+}: AppProps & {
+  Component: NextComponentType<NextPageContext> & {
+    Guard: FunctionComponent
+    Layout: FunctionComponent
+    Provider: FunctionComponent
+  }
+}) {
+  const Layout = Component.Layout || <>Hi</>
 
-type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
-}
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((children) => <>{children}</>)
-  return getLayout(
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </QueryClientProvider>
+  const Guard = Component.Guard || Fragment
+
+  return (
+    <Fragment>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </Fragment>
   )
 }
 

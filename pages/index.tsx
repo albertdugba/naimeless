@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { getLayout } from '@layout'
+import { getLayout, MainLayout } from '@layout'
 import { Feed } from '@features/post/components'
 
 const Home = () => {
@@ -15,6 +15,6 @@ const Home = () => {
   )
 }
 
-Home.getLayout = getLayout
+Home.Layout = MainLayout
 
 export default Home

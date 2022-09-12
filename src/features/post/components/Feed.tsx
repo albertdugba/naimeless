@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Gravatar from 'react-gravatar'
 import { useGetAllPosts, useGetSinglePost } from '@features/post/api'
 import { Post } from '../interface/post'
@@ -18,8 +18,7 @@ export const Feed = () => {
   const { post: allPosts, isLoading, isSuccess } = useGetAllPosts()
   const postId = Number(selectPost?.id)
   const post = useGetSinglePost(postId)
-  const { user } = useGetProfile()
-  console.log('userprofile', user)
+  // const { user } = useGetProfile()
 
   return (
     <>

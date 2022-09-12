@@ -5,7 +5,5 @@ interface AuthLayoutProps {
 }
 
 export const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
-  return <div>qwedef{children}</div>
+  return <div>{children}</div>
 }
-
-export const getAuthLayout = (page: ReactElement) => <>{page}</>

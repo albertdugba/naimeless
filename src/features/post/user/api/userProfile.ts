@@ -6,8 +6,7 @@ const getUser = async (): Promise<IUser> =>
   await axios.get('/api/me').then((res) => res.data)
 
 export const useGetProfile = () => {
-  const result = useQuery<IUser, Error>('me', () => getUser())
-
+  const result = useQuery<IUser, unknown>('me', () => getUser())
   return {
     ...result,
     user: result.data,

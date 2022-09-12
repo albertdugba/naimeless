@@ -1,16 +1,13 @@
+import * as z from 'zod'
 import { Button } from '@elements/Button'
-import { TextField } from '@elements/Form'
 import { Form } from '@Form/Form'
 import { InputField } from '@Form/InputField'
-import { getAuthLayout } from '@layout'
-import { FormEvent, useState } from 'react'
-import * as z from 'zod'
+import { AuthLayout } from '@layout'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const SignIn = () => {
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault()
-  }
-
+  const router = useRouter()
   const schema = z.object({
     email: z.string().min(1, 'Email is Required'),
     password: z.string().min(1, 'Password is Required'),
@@ -20,17 +17,34 @@ const SignIn = () => {
     email: string
     password: string
   }
+
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen">
       <Form<LoginValues, typeof schema>
         onSubmit={async (values) => {
-          // await login(values)
+          axios
+            .post('/api/signin', values)
+            .then((res) => {
+              console.log('[Res]', router.query.from.toString())
+              if (res.data) {
+                if (router.query && router.query.from) {
+                  router.push(router.query.from.toString())
+                }
+              }
+            })
+            .catch((err) => console.log(err))
         }}
-        className="bg-white px-8 py-8 rounded-[14px] max-w-[450px] mx-auto"
+        className="bg-white px-8 py-8 rounded-[14px] max-w-[420px] mx-auto"
         schema={schema}
       >
         {({ register, formState }) => (
           <>
+            <div>
+              <h1 className="text-2xl font-bold">Sign In</h1>
+              <span className="text-sm text-gray-400">
+                Enter your Naimeless Account details.
+              </span>
+            </div>
             <InputField
               type="email"
               label="Email Address"
@@ -58,5 +72,5 @@ const SignIn = () => {
   )
 }
 
-SignIn.getAuthLayout = getAuthLayout
+SignIn.Layout = AuthLayout
 export default SignIn

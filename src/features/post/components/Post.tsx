@@ -1,5 +1,5 @@
 import { PostCard } from '@elements/Card'
-import { Dropdown } from '@Popper/Dropdown'
+// import { Dropdown } from '@Popper/Dropdown'
 import { formatDistance } from 'date-fns'
 import { FC, useEffect, useState } from 'react'
 import { Post, Post as SinglePostTypes } from '../interface/post'
@@ -10,6 +10,11 @@ import { Modal } from '@Modal/modal'
 import { Button } from '@elements/Button'
 import { StyledModal } from './style'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useRouter } from 'next/router'
+import { useGetProfile } from '../user/api'
+import { InputField } from '@Form/InputField'
+import { TextField } from '@elements/Form'
+import { Dropdown } from '@Dropdown/Dropdown'
 
 interface PostProps {
   post: SinglePostTypes
@@ -19,6 +24,9 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
   const [toggleCommentBox, setToggleCommentBox] = useState(false)
   const [deletePostModal, setDeletePostModal] = useState(false)
   const [selectPost, setSelectPost] = useState<Post>()
+  const [openModal, setOpenModal] = useState(false)
+  const { user } = useGetProfile()
+  const router = useRouter()
 
   // votesCount = 12
 
@@ -41,6 +49,18 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
     }
   }, [deletePost.isError, deletePost.isSuccess])
 
+  const handleUnauthClick = () => {
+    if (!user) {
+      // router.push({
+      //   pathname: '/auth/signin',
+      //   query: { from: router.pathname },
+      // })
+      setOpenModal(true)
+    }
+  }
+
+  console.log('router', router.pathname)
+
   return (
     <div>
       <Modal
@@ -57,6 +77,15 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
               {deletePost.isLoading ? 'Deleting post' : 'Delete'}
             </Button>
           </Modal.Footer>
+        </StyledModal>
+      </Modal>
+
+      <Modal isOpen={openModal} setIsOpen={() => setOpenModal(false)}>
+        <StyledModal>
+          <Modal.Header>Log in to continue</Modal.Header>
+          <Modal.Content>
+            <TextField label="Email" />
+          </Modal.Content>
         </StyledModal>
       </Modal>
       <div className="my-2">
@@ -87,6 +116,16 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
                     </span>
                   </div>
                   <Dropdown
+                    title={<Icons.MoreHori />}
+                    options={[
+                      {
+                        label: 'Profile',
+                        value: 'Profile',
+                        icon: <Icons.People />,
+                      },
+                    ]}
+                  />
+                  {/* <Dropdown
                     titleElement={<Icons.MoreHori />}
                     placement="bottom-end"
                     offset={{ horizontal: 0, vertical: 0 }}
@@ -112,7 +151,7 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
                         <span>Pin</span>
                       </div>
                     </div>
-                  </Dropdown>
+                  </Dropdown> */}
                 </div>
 
                 {/* message body */}
@@ -137,7 +176,11 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
                   <div className="p-0">
                     <button
                       data-testid="commentHandle"
-                      onClick={() => setToggleCommentBox((val) => !val)}
+                      onClick={() =>
+                        !user
+                          ? handleUnauthClick()
+                          : setToggleCommentBox((val) => !val)
+                      }
                       className="flex items-center gap-1 cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all"
                     >
                       <Icons.Comment />

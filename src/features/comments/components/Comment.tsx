@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useGetProfile } from '@features/post/user/api'
 import { IUser } from '@features/post/user/interface'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { Avatar } from '@Avatar'
 
 interface CommentProps {
   message: string
@@ -30,6 +32,8 @@ export const SingleComment: FC<CommentProps> = ({
   const createReply = useAddCommentReply()
   const { user: userProfile } = useGetProfile()
 
+  const router = useRouter()
+
   const handleAddReply = () => {
     createReply.mutate({ body: reply, commentId })
   }
@@ -43,26 +47,7 @@ export const SingleComment: FC<CommentProps> = ({
       >
         <div className="">
           <div className="flex gap-2">
-            <div className="">
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '50%',
-                  backgroundColor: user?.avatarColor,
-                }}
-              >
-                <Image
-                  src="/icons/logo.svg"
-                  height={18}
-                  width={18}
-                  alt="User"
-                />
-              </div>
-            </div>
+            <Avatar avatarColor={user?.avatarColor} />
 
             <div className="flex flex-col gap-2 w-full">
               <div className="flex items-center gap-2">
@@ -107,26 +92,7 @@ export const SingleComment: FC<CommentProps> = ({
                 <div className="w-full flex-col flex mt-2 gap-4">
                   {toggledInput && (
                     <div className="flex gap-3 w-full">
-                      <div className="w-[40px] h-[40px]">
-                        <div
-                          style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            width: '32px',
-                            height: '32px',
-                            borderRadius: '50%',
-                            backgroundColor: userProfile?.avatarColor,
-                          }}
-                        >
-                          <Image
-                            src="/icons/logo.svg"
-                            height={18}
-                            width={18}
-                            alt="User"
-                          />
-                        </div>
-                      </div>
+                      <Avatar avatarColor="deepblue" />
                       <div className="flex flex-col w-full gap-2">
                         <textarea
                           value={reply}
