@@ -9,11 +9,18 @@ interface AvatarColorProps {
 }
 export const Avatar: FC<AvatarColorProps> = ({ avatarColor }) => {
   return (
-    <StyledAvatar avatarColor={avatarColor} data-testid="avatar-image">
-      <Image src="/icons/logo.svg" height={18} width={18} alt="User" />
-    </StyledAvatar>
+    <StyledContainer>
+      <StyledAvatar avatarColor={avatarColor} data-testid="avatar-image">
+        <Image src="/icons/logo.svg" height={18} width={18} alt="User" />
+      </StyledAvatar>
+    </StyledContainer>
   )
 }
+
+const StyledContainer = styled.div`
+  height: 40px;
+  width: 40px;
+`
 
 const StyledAvatar = styled.div<Partial<IUser>>`
   display: flex;

@@ -1,24 +1,7 @@
+import { colors } from '@utils/colors'
 import styled from 'styled-components'
-import { MainNavigation } from '../Nav'
-import { SideNav } from '../Sidenav'
-import { ReactElement, ReactNode } from 'react'
 
-type LayoutProps = {
-  children: ReactNode
-}
-
-export const MainLayout = ({ children }: LayoutProps) => {
-  return (
-    <StyledLayout>
-      <SideNav />
-      <Layout>{children}</Layout>
-    </StyledLayout>
-  )
-}
-
-export const getLayout = (page: ReactElement) => <MainLayout>{page}</MainLayout>
-
-const StyledLayout = styled.section`
+export const StyledWrapper = styled.section`
   --header-height: 4.5rem;
   display: grid;
   grid-template-columns: 0rem;
@@ -45,9 +28,28 @@ const StyledLayout = styled.section`
   }
 `
 
-const Layout = styled.div`
+export const StyledLayout = styled.div`
   grid-area: main;
   min-height: 100%;
   width: 100%;
   margin-top: 10px;
 `
+
+const StyledSidenav = styled.aside`
+  grid-area: aside;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 50px;
+  width: 20rem;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.14);
+  border-right: 1px solid ${colors.neutral[300]};
+  background: #fff;
+  padding: 1.2rem;
+  display: none;
+  @media (min-width: 701px) {
+    display: block;
+  }
+`
+
+export { StyledSidenav }
