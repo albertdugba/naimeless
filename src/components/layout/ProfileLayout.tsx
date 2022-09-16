@@ -1,8 +1,6 @@
-import { MainNavigation } from '@Nav'
-import { SideNav } from '@Sidenav'
-import { TabLink } from '@Tab/TabLink'
 import { FC, ReactNode } from 'react'
-import styled from 'styled-components'
+import { MainNavigation } from '@Nav'
+import { TabLink } from '@Tab/TabLink'
 import { ProfileSideNav } from './profile/ProfileSideNav'
 import { StyledLayout, StyledWrapper } from './profile/styled'
 
