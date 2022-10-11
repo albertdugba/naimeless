@@ -10,6 +10,7 @@ type LayoutProps = {
 export const MainLayout = ({ children }: LayoutProps) => {
   return (
     <StyledLayout>
+      <MainNavigation />
       <SideNav />
       <Layout>{children}</Layout>
     </StyledLayout>

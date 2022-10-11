@@ -18,6 +18,7 @@ export const StyledWrapper = styled.section`
     grid-template-columns: 20rem;
     grid-template-rows: 2rem 1fr;
     min-height: 100vh;
+    overflow: hidden;
     grid-template-areas:
       'header header header'
       'aside main main'
