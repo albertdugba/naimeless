@@ -2,10 +2,15 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '../src/utils'
-import { Fragment, FunctionComponent, ReactElement, ReactNode } from 'react'
-import { MainLayout } from '../src/components/layout'
+import {
+  ComponentType,
+  ElementType,
+  Fragment,
+  FunctionComponent,
+  ReactElement,
+} from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
-import { NextComponentType, NextPage, NextPageContext } from 'next/types'
+import { NextComponentType, NextPageContext } from 'next/types'
 
 const queryClient = new QueryClient()
 
@@ -15,22 +20,20 @@ function MyApp({
 }: AppProps & {
   Component: NextComponentType<NextPageContext> & {
     Guard: FunctionComponent
-    Layout: FunctionComponent
+    Layout: any
     Provider: FunctionComponent
   }
 }) {
   const Layout = Component.Layout || <>Hi</>
 
-  const Guard = Component.Guard || Fragment
-
   return (
     <Fragment>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <Layout>
+        <Layout>
+          <ThemeProvider theme={theme}>
             <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
+          </ThemeProvider>
+        </Layout>
       </QueryClientProvider>
     </Fragment>
   )

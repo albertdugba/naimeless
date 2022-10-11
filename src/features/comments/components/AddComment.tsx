@@ -40,6 +40,7 @@ export const AddComment: FC<Props> = ({ postId }) => {
   return (
     <div className="flex gap-2">
       <Avatar avatarColor={user?.avatarColor} />
+
       <div className="flex flex-col w-full gap-2">
         <textarea
           value={commentVal}

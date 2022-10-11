@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DB_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -46,6 +45,13 @@ model Comment {
   commentId Int?
   user      User?    @relation(fields: [userId], references: [id])
   userId    Int?
+}
+
+model Channel {
+  name      String   @unique
+  id        Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt()
 }
 
 model Reply {
