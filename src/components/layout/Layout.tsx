@@ -22,7 +22,7 @@ export const getLayout = (page: ReactElement) => <MainLayout>{page}</MainLayout>
 const StyledLayout = styled.section`
   --header-height: 4.5rem;
   display: grid;
-  grid-template-columns: 0rem;
+  /* grid-template-columns: 0rem; */
   grid-template-rows: 2rem 1fr;
   min-height: 100vh;
   grid-template-areas:

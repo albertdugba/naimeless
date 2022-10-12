@@ -9,7 +9,7 @@ interface OptionValueProps {
 
 interface Options {
   options?: OptionValueProps[]
-  title?: string
+  title?: string | ReactElement
 }
 
 export const Dropdown: FC<Options> = ({ options, title = 'Profile' }) => {

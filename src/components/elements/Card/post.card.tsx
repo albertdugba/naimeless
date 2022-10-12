@@ -13,6 +13,9 @@ export const PostCard = ({ children }: { children: ReactNode }) => {
 const Card = styled.div`
   @media (min-width: 801px) {
     border: 1px solid ${colors.neutral[300]};
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    /* box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.14); */
   }
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.14);
 `

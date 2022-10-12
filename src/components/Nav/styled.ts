@@ -20,9 +20,7 @@ const StyledHeaderInner = styled.div`
   align-items: center;
   justify-content: space-between;
   background: #fff;
-  padding-left: 10px;
   height: 100%;
-  padding-right: 10px;
   position: relative;
 `
 

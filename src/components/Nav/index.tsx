@@ -15,7 +15,7 @@ export const MainNavigation = () => {
     <StyledHeader>
       <AuthModal openModal={openModal} setOpenModal={setOpenModal} />
       <StyledHeaderInner>
-        <h1 className="p-3 flex items-center gap-3">
+        <h1 className="p-4 flex items-center gap-3">
           <Image
             src="/icons/naimeless.svg"
             height={45}
