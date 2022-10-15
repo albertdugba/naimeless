@@ -7,6 +7,7 @@ import { useCreatePost } from '../api'
 import { Button } from '@elements/Button'
 import * as Icons from '@icons/index'
 import { AnimatePresence } from 'framer-motion'
+import { Avatar } from '@ui/avatar'
 
 interface CreatePostProps {
   setOpenModal: (val: boolean) => void
@@ -133,10 +134,7 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
               <Modal.Content>
                 <form onSubmit={(e) => e.preventDefault()}>
                   <div className="flex items-center gap-3">
-                    <Gravartar
-                      className="h-[45px] w-[45px] rounded-full"
-                      email="ama@duncan.com"
-                    />
+                    <Avatar avatarColor="red" />
 
                     <button
                       onClick={() => handleViewMode('channels')}

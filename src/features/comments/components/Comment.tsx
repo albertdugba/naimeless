@@ -9,7 +9,7 @@ import { useGetProfile } from '@features/post/user/api'
 import { IUser } from '@features/post/user/interface'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Avatar } from '@Avatar'
+import { Avatar } from '@ui/avatar'
 
 interface CommentProps {
   message: string

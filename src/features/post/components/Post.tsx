@@ -109,7 +109,7 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
                         {`@${post.channelName?.toLocaleLowerCase()}`}
                       </span>
                     </div>
-                    <span className="text-[12px] text-gray-400 inline-block">
+                    <span className="text-[12px] text-gray-400 inline-block whitespace-nowrap">
                       {formatDistance(new Date(post.createdAt), new Date(), {
                         addSuffix: true,
                       })}

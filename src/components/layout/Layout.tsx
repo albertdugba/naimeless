@@ -34,7 +34,7 @@ const StyledLayout = styled.section`
 
   @media (min-width: 701px) {
     grid-template-columns: 20rem;
-    grid-template-rows: 2rem 1fr;
+    grid-template-rows: 2rem 2fr;
     min-height: 100vh;
     grid-template-areas:
       'header header header'
@@ -42,7 +42,6 @@ const StyledLayout = styled.section`
       'aside main main';
     max-width: 1000px;
     margin: 0 auto;
-    gap: 1rem;
   }
 `
 
@@ -51,4 +50,5 @@ const Layout = styled.div`
   min-height: 100%;
   width: 100%;
   margin-top: 10px;
+  /* border: 1px solid black; */
 `

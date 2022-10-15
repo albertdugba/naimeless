@@ -16,6 +16,7 @@
     "strict": false,
     "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
+    "strictBindCallApply": true,
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
@@ -31,8 +32,9 @@
     "**/*.tsx",
     "pages/**/*",
     "components/**/*",
-    "next.config.js",
-    "src/features/post/components/style.ts"
+    "src",
+    ".storybook",
+    "next.config.js"
   ],
   "exclude": ["node_modules"]
 }

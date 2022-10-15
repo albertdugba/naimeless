@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useGetProfile } from '@features/post/user/api'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { Avatar } from '@Avatar'
+import { Avatar } from '@ui/avatar'
 
 interface Props {
   postId: number
