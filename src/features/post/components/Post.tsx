@@ -7,7 +7,6 @@ import * as Icons from '@icons/index'
 import { AddComment, CommentList } from '@features/comments/components'
 import { useDeletePost } from '../api'
 import { Modal } from '@Modal/modal'
-import { Button } from '@elements/Button'
 import { StyledModal } from './style'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
@@ -15,6 +14,7 @@ import { useGetProfile } from '../user/api'
 import { InputField } from '@Form/InputField'
 import { TextField } from '@elements/Form'
 import { Dropdown } from '@Dropdown/Dropdown'
+import { Button } from '@ui/button/button'
 
 interface PostProps {
   post: SinglePostTypes
@@ -73,7 +73,7 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
           </div>
           <Modal.Content>Youre about to delele Post</Modal.Content>
           <Modal.Footer>
-            <Button variant="danger" onClick={handleDeletePost} fullWidth>
+            <Button onClick={handleDeletePost} fullWidth>
               {deletePost.isLoading ? 'Deleting post' : 'Delete'}
             </Button>
           </Modal.Footer>

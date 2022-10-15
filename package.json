@@ -13,7 +13,7 @@
     "test": "jest --watch",
     "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'",
     "db:seed": "ts-node --compiler-options '{\"module\":\"CommonJS\"}' -r tsconfig-paths/register",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s . && ./src",
     "build-storybook": "build-storybook"
   },
   "dependencies": {

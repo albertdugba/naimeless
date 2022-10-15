@@ -3,6 +3,7 @@ import { StyledSidenav } from './styled'
 
 export const SideNav = () => {
   const channels = ['Entertainment', 'life', 'software', 'finance']
+
   return (
     <StyledSidenav>
       <div className="bg rounded-[8px] mt-8 p-6 w-full border  bg-white ">

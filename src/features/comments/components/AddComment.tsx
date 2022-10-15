@@ -1,11 +1,11 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
-import { Button } from '@elements/Button'
 import { useMutation, useQueryClient } from 'react-query'
 import axios from 'axios'
 import { useGetProfile } from '@features/post/user/api'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Avatar } from '@ui/avatar'
+import { Button } from '@ui/button/button'
 
 interface Props {
   postId: number
@@ -51,7 +51,6 @@ export const AddComment: FC<Props> = ({ postId }) => {
         />
         <div className="flex justify-end">
           <Button
-            variant="primary"
             size="small"
             onClick={() =>
               handleAddComment.mutate({ message: commentVal, postId })

@@ -5,12 +5,12 @@ import { lightTheme, darkTheme } from '../styles/theme'
 import { GlobalStyle } from '../styles/GlobalStyle'
 
 const withTheme: DecoratorFn = (StoryFn, context) => {
-  const theme = context.globals.theme
-  const storyTheme = theme === 'dark' ? darkTheme : lightTheme
   return (
     <ThemeProvider theme={lightTheme}>
-      <GlobalStyle />
-      <StoryFn />
+      <div style={{ fontFamily: 'Cera Pro Regular' }}>
+        <GlobalStyle />
+        <StoryFn />
+      </div>
     </ThemeProvider>
   )
 }

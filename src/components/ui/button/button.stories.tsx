@@ -1,5 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Button } from './button'
+import * as Icons from '../../../../public/icons/index'
 
 export default {
   title: 'Components/Button',
@@ -10,8 +11,23 @@ const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  children: 'Hello Button and very long text',
+  children: 'Button',
+}
+
+export const RoundedButton = Template.bind({})
+RoundedButton.args = {
   round: true,
-  variant: 'ghost',
+  children: 'Rounded Button',
+}
+
+export const SmallButton = Template.bind({})
+SmallButton.args = {
   size: 'small',
+  children: 'Small Button',
+}
+
+export const VerySmallButton = Template.bind({})
+VerySmallButton.args = {
+  size: 'xs',
+  children: 'Very Small Button',
 }

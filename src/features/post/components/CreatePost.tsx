@@ -4,10 +4,10 @@ import { DownArrow, People } from '@icons/index'
 import { StyledModal } from './style'
 import { Modal } from '@Modal/modal'
 import { useCreatePost } from '../api'
-import { Button } from '@elements/Button'
 import * as Icons from '@icons/index'
 import { AnimatePresence } from 'framer-motion'
 import { Avatar } from '@ui/avatar'
+import { Button } from '@ui/button/button'
 
 interface CreatePostProps {
   setOpenModal: (val: boolean) => void

@@ -18,6 +18,7 @@ const baseColors = {
   white: '#FFFFFF ',
   black: '#202020',
   otherBlack: '#2C2C2C ',
+  bgOpacity: 'none',
   grey: {
     base: '#909090',
     light1: '#A6A6A6',
@@ -34,7 +35,8 @@ const baseColors = {
     dark6: '#202020',
   },
   purple: {
-    purple1: '#7453B2',
+    purple1: '#d7caf0',
+    purple2: '#7453B2',
   },
 }
 
@@ -63,7 +65,7 @@ const spacing = {
 const boxShadow = {
   card: '0px 14px 26px 0px rgba(0, 0, 0, 0.08)',
   inner: 'inset 0 3px 0 0 rgba(0, 0, 0, 0.05)',
-  outerBorder: `0 0 0 1px ${baseColors.grey.dark3}, 0 0 0 4px ${baseColors.grey.dark4}`,
+  outerBorder: `0 0 0 1px ${baseColors.purple.purple1}, 0 0 0 4px ${baseColors.purple.purple2}`,
 }
 
 const typography = {
@@ -89,11 +91,11 @@ const color = {
   accentText: baseColors.black,
   badgeBackground: baseColors.grey.light4,
   badgeText: baseColors.grey.dark2,
-
   buttonClear: 'transparent',
   buttonClearHover: baseColors.grey.light5,
-  buttonPrimary: baseColors.purple.purple1,
-  buttonPrimaryHover: baseColors.grey.dark5, // recheck
+  buttonPrimary: baseColors.purple.purple2,
+  buttonPrimaryText: baseColors.grey.dark4,
+  buttonPrimaryHover: baseColors.bgOpacity, // recheck
 }
 
 export const lightTheme: DefaultTheme = {
@@ -101,7 +103,7 @@ export const lightTheme: DefaultTheme = {
   boxShadow,
   color,
   fonts: {
-    family: 'Cera Pro Regular, sans-serif',
+    family: 'Cera Pro Regular',
   },
   name: 'light',
   spacing,
