@@ -1,5 +1,5 @@
-import { ProfileLinks } from '@layout/profile'
-import ProfileLayout from '@layout/ProfileLayout'
+import { ProfileLinks } from '@/layout/profile'
+import ProfileLayout from '@/layout/ProfileLayout'
 
 const ProfileComments = () => {
   return (

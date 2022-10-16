@@ -1,5 +1,5 @@
 import { FC, useState } from 'react'
-import { PostCard } from '@/ui/post-card'
+import { PostCard } from '@/post-card'
 
 import { Post as SinglePostTypes } from '../interface/post'
 

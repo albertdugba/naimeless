@@ -1,4 +1,4 @@
-import { TabLink } from '@Tab/TabLink'
+import { TabLink } from '@/Tab/TabLink'
 
 export const ProfileLinks = () => {
   return (

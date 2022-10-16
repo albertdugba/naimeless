@@ -1,10 +1,11 @@
 import * as z from 'zod'
-import { Button } from '@elements/Button'
-import { Form } from '@Form/Form'
-import { InputField } from '@Form/InputField'
-import { AuthLayout } from '@layout'
+
+import { Form } from '@/Form/Form'
+import { InputField } from '@/Form/InputField'
+import { AuthLayout } from '@/layout'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { Button } from '@/ui/button'
 
 const SignIn = () => {
   const router = useRouter()
@@ -61,7 +62,7 @@ const SignIn = () => {
               <Button type="submit" className="w-full">
                 Log in
               </Button>
-              <Button variant="outlined" className="w-full mt-4">
+              <Button variant="ghost" className="w-full mt-4">
                 Create an Account
               </Button>
             </div>

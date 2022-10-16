@@ -1,5 +1,5 @@
 import { StyledSidenav } from './styled'
-const channels = ['Entertainment', 'life', 'software', 'finance']
+
 import Link from 'next/link'
 
 export const ProfileSideNav = () => {

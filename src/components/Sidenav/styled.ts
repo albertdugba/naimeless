@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { colors } from '../../utils'
 
 const StyledSidenav = styled.aside`
   grid-area: aside;

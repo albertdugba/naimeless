@@ -1,4 +1,4 @@
-import { Reply } from '@features/comments/interface/comment'
+import { Reply } from '@/features/comments/interface/comment'
 import axios from 'axios'
 import { useMutation, useQueryClient } from 'react-query'
 

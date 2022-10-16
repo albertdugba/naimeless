@@ -39,7 +39,7 @@ const desktopAnimation = css`
 `
 
 export const ModalContent = styled.div(
-  ({ theme: { color, borderRadius } }) => css`
+  ({ theme: { borderRadius } }) => css`
     background-color: red;
     border-top-left-radius: ${borderRadius.m};
     border-top-right-radius: ${borderRadius.m};
@@ -71,7 +71,7 @@ export const ModalContent = styled.div(
 
 export const Backdrop = styled.div`
   position: fixed;
-  background-color: ${({ theme }) => 'rgba(0, 0, 0, 0.4)'};
+  background-color: ${({}) => 'rgba(0, 0, 0, 0.4)'};
   top: 0;
   right: 0;
   bottom: 0;

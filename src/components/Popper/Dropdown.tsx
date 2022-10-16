@@ -2,7 +2,7 @@
 import React, { FC, ReactElement, ReactNode, useRef, useState } from 'react'
 import { usePopper } from 'react-popper'
 import { Placement } from '@popperjs/core'
-import { useHandleClickOutside } from '@hooks/useClickOutside'
+import { useHandleClickOutside } from '@/hooks/useClickOutside'
 import { DropDownContainer, DropdownItem } from './styled'
 
 interface DropdownProps {

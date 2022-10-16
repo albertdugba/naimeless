@@ -7,6 +7,11 @@ import { CardProps } from './post-card.interface'
 import { Card } from '@/context/card'
 import { AddComment, CommentList } from '@/features/comments/components'
 import * as Icons from '@/icons/index'
+import {
+  CardContent,
+  CardFooterActionsContainer,
+  CardHeaderContainer,
+} from './post-card.styled'
 
 export const PostCard: FC<CardProps> = ({
   post,
@@ -18,9 +23,8 @@ export const PostCard: FC<CardProps> = ({
       <div className="w-full">
         <div className="w-full flex gap-8 justify-between">
           <div className="flex flex-col w-full">
-            {/* post header */}
             <Card.Header>
-              <div className="flex items-center justify-between">
+              <CardHeaderContainer>
                 <div className="flex items-center gap-2">
                   <div className="p-0">
                     <span
@@ -52,19 +56,17 @@ export const PostCard: FC<CardProps> = ({
                     },
                   ]}
                 />
-              </div>
+              </CardHeaderContainer>
             </Card.Header>
-
-            {/* message body */}
             <Card.Body>
-              <div className="text-[11px] py-1 mt-2">
+              <CardContent>
                 <p className="mb-1 text-lg">{post.message}</p>
-              </div>
+              </CardContent>
             </Card.Body>
 
             {/* actions */}
             <Card.Actions>
-              <div className="flex gap-1 mt-[6px] items-center">
+              <CardFooterActionsContainer>
                 <div className="flex items-center gap-[7px] justify-between h-full bg-gray-100 rounded-full px-2 py-1">
                   <button
                     aria-label="up arrow"
@@ -80,7 +82,7 @@ export const PostCard: FC<CardProps> = ({
                 <div className="p-0">
                   <button
                     data-testid="commentHandle"
-                    onClick={() => setToggleCard((val) => !val)}
+                    onClick={() => setToggleCard(true)}
                     className="flex items-center gap-1 cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all"
                   >
                     <Icons.Comment />
@@ -92,7 +94,7 @@ export const PostCard: FC<CardProps> = ({
                 <div className="cursor-pointer hover:bg-gray-200 py-[6px] px-[5px]  rounded-[4px] transition-all">
                   <Icons.Share />
                 </div>
-              </div>
+              </CardFooterActionsContainer>
             </Card.Actions>
 
             {/* comments section */}
