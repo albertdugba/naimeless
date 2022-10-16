@@ -1,4 +1,4 @@
-import { FC, ReactElement, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 interface AuthLayoutProps {
   children: ReactNode

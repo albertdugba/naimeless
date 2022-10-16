@@ -2,20 +2,21 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@*": ["src/components/*"],
-      "@features/*": ["src/features/*"],
-      "@utils/*": ["src/utils/*"],
-      "@icons/*": ["public/icons/*"],
-      "@interface/*": ["src/interface/*"]
+      "@/*": ["src/components/*"],
+      "@/features/*": ["src/features/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/icons/*": ["public/icons/*"],
+      "@/interface/*": ["src/interface/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["cypress", "@testing-library/cypress"],
+    "types": ["cypress", "jest", "@testing-library/cypress"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
     "downlevelIteration": true,
     "forceConsistentCasingInFileNames": true,
+    "strictBindCallApply": true,
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
@@ -31,8 +32,10 @@
     "**/*.tsx",
     "pages/**/*",
     "components/**/*",
-    "next.config.js",
-    "src/features/post/components/style.ts"
+    "jest",
+    "src",
+    ".storybook",
+    "next.config.js"
   ],
   "exclude": ["node_modules"]
 }

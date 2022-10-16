@@ -1,21 +1,24 @@
 import { useState } from 'react'
-import { Button } from '../elements/Button'
+// import { Button } from '../elements/Button'
 import { StyledHeader, StyledHeaderInner } from './styled'
-import { AuthModal } from '@elements/Modals/AuthModal'
 import Image from 'next/image'
-import { useGetProfile } from '@features/post/user/api'
-import { Dropdown } from '@Dropdown/Dropdown'
-import * as Icons from '@icons/index'
-import { Avatar } from '@Avatar'
+import { useGetProfile } from '@/features/post/user/api'
+import { Dropdown } from '@/Dropdown/Dropdown'
+import * as Icons from '@/icons/index'
+import { Avatar } from '@/ui/avatar'
+import { Modal } from '@/ui/modal/modal'
+import { Button } from '@/ui/button/button'
 
 export const MainNavigation = () => {
   const [openModal, setOpenModal] = useState(false)
   const { user } = useGetProfile()
   return (
     <StyledHeader>
-      <AuthModal openModal={openModal} setOpenModal={setOpenModal} />
+      <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
+        <h1>Hello Modal</h1>
+      </Modal>
       <StyledHeaderInner>
-        <h1 className="p-3 flex items-center gap-3">
+        <h1 className="p-4 flex items-center gap-3">
           <Image
             src="/icons/naimeless.svg"
             height={45}
@@ -42,13 +45,12 @@ export const MainNavigation = () => {
             ]}
           />
         ) : (
-          <Button
-            onClick={() => setOpenModal(true)}
-            variant="primary"
-            size="medium"
-          >
-            Log In
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button variant="ghost" size="small">
+              + Create Post
+            </Button>
+            <Button size="small">Login</Button>
+          </div>
         )}
       </StyledHeaderInner>
     </StyledHeader>

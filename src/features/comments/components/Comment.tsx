@@ -1,15 +1,12 @@
 import { formatDistance } from 'date-fns'
 import { ChangeEvent, FC, useState } from 'react'
-import * as Icons from '@icons/index'
+import * as Icons from '@/icons/index'
 import { Reply } from '../interface/comment'
-import { Button } from '@elements/Button'
-import { useAddCommentReply } from '@features/replies/api/addReply'
+import { useAddCommentReply } from '@/features/replies/api/addReply'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useGetProfile } from '@features/post/user/api'
-import { IUser } from '@features/post/user/interface'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { Avatar } from '@Avatar'
+import { IUser } from '@/features/post/user/interface'
+import { Avatar } from '@/ui/avatar'
+import { Button } from '@/ui/button/button'
 
 interface CommentProps {
   message: string
@@ -30,9 +27,6 @@ export const SingleComment: FC<CommentProps> = ({
   const [reply, setReply] = useState('')
   const [viewMoreReplies, setViewMoreReplies] = useState(false)
   const createReply = useAddCommentReply()
-  const { user: userProfile } = useGetProfile()
-
-  const router = useRouter()
 
   const handleAddReply = () => {
     createReply.mutate({ body: reply, commentId })
@@ -104,18 +98,13 @@ export const SingleComment: FC<CommentProps> = ({
                         <div className="flex gap-3 justify-end">
                           <Button
                             onClick={() => setToggledInput(false)}
-                            variant="outlined"
                             size="small"
                           >
                             <div className="whitespace-nowrap px-4 py-1">
                               Cancel
                             </div>
                           </Button>
-                          <Button
-                            onClick={handleAddReply}
-                            variant="primary"
-                            size="small"
-                          >
+                          <Button onClick={handleAddReply} size="small">
                             <div className="whitespace-nowrap px-4 py-1">
                               {createReply.isLoading ? 'Replying...' : 'Reply'}
                             </div>

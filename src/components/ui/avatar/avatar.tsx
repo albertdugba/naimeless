@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import { IUser } from '@features/user/api/interface'
-import { colors } from '../../utils/colors'
+import { IUser } from '@/features/user/api/interface'
+import { colors } from '../../../utils/colors'
 
 interface AvatarColorProps {
   avatarColor: string

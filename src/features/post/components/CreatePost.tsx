@@ -1,12 +1,13 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
 import Gravartar from 'react-gravatar'
-import { DownArrow, People } from '@icons/index'
+import { DownArrow, People } from '@/icons/index'
 import { StyledModal } from './style'
-import { Modal } from '@Modal/modal'
+import { Modal } from '@/Modal/modal'
 import { useCreatePost } from '../api'
-import { Button } from '@elements/Button'
-import * as Icons from '@icons/index'
+import * as Icons from '@/icons/index'
 import { AnimatePresence } from 'framer-motion'
+import { Avatar } from '@/ui/avatar'
+import { Button } from '@/ui/button/button'
 
 interface CreatePostProps {
   setOpenModal: (val: boolean) => void
@@ -133,10 +134,7 @@ export const CreatePost: FC<CreatePostProps> = (props) => {
               <Modal.Content>
                 <form onSubmit={(e) => e.preventDefault()}>
                   <div className="flex items-center gap-3">
-                    <Gravartar
-                      className="h-[45px] w-[45px] rounded-full"
-                      email="ama@duncan.com"
-                    />
+                    <Avatar avatarColor="red" />
 
                     <button
                       onClick={() => handleViewMode('channels')}

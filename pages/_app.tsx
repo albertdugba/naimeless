@@ -1,16 +1,12 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../src/utils'
-import {
-  ComponentType,
-  ElementType,
-  Fragment,
-  FunctionComponent,
-  ReactElement,
-} from 'react'
+import { Fragment, FunctionComponent } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { NextComponentType, NextPageContext } from 'next/types'
+
+import '../styles/globals.css'
+import { lightTheme } from 'styles/theme'
+import { GlobalStyle } from 'styles/GlobalStyle'
 
 const queryClient = new QueryClient()
 
@@ -20,20 +16,22 @@ function MyApp({
 }: AppProps & {
   Component: NextComponentType<NextPageContext> & {
     Guard: FunctionComponent
-    Layout: any
+    Layout: FunctionComponent
     Provider: FunctionComponent
   }
 }) {
-  const Layout = Component.Layout || <>Hi</>
+  console.log('lightTheme', lightTheme)
+  const Layout = Component.Layout || Fragment
 
   return (
     <Fragment>
       <QueryClientProvider client={queryClient}>
-        <Layout>
-          <ThemeProvider theme={theme}>
+        <ThemeProvider theme={lightTheme}>
+          <Layout>
+            <GlobalStyle />
             <Component {...pageProps} />
-          </ThemeProvider>
-        </Layout>
+          </Layout>
+        </ThemeProvider>
       </QueryClientProvider>
     </Fragment>
   )

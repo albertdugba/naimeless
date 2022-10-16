@@ -1,7 +1,7 @@
 import { clsx } from 'clsx'
 import { ReactNode } from 'react'
 import { FieldError } from 'react-hook-form'
-import ExclamationIcon from '@icons/exclamation'
+import ExclamationIcon from '@/icons/exclamation'
 
 type FieldWrapperProps = {
   label?: string

@@ -1,4 +1,4 @@
-import { GenericList } from '@List'
+import { GenericList } from '@/List'
 import { FC } from 'react'
 import { Comments } from '../interface/comment'
 import { SingleComment } from './Comment'

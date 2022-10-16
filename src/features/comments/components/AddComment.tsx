@@ -1,11 +1,9 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
-import { Button } from '@elements/Button'
 import { useMutation, useQueryClient } from 'react-query'
 import axios from 'axios'
-import { useGetProfile } from '@features/post/user/api'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
-import { Avatar } from '@Avatar'
+import { useGetProfile } from '@/features/post/user/api'
+import { Avatar } from '@/ui/avatar'
+import { Button } from '@/ui/button'
 
 interface Props {
   postId: number
@@ -50,15 +48,23 @@ export const AddComment: FC<Props> = ({ postId }) => {
           className="border px-2 py-4 rounded-md w-full outline-none text-gray-500"
         />
         <div className="flex justify-end">
-          <Button
-            variant="primary"
-            size="small"
-            onClick={() =>
-              handleAddComment.mutate({ message: commentVal, postId })
-            }
-          >
-            <div className="whitespace-nowrap px-4 py-1">Post comment</div>
-          </Button>
+          <div className="flex items-center gap-4">
+            <Button size="xs" clear>
+              <div className="whitespace-nowrap px-4 py-1 text-white">
+                Cancel
+              </div>
+            </Button>
+            <Button
+              size="xs"
+              onClick={() =>
+                handleAddComment.mutate({ message: commentVal, postId })
+              }
+            >
+              <div className="whitespace-nowrap px-4 py-1 text-white">
+                Post comment
+              </div>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

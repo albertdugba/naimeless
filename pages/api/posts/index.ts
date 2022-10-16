@@ -1,9 +1,11 @@
+/* eslint-disable import/no-anonymous-default-export */
 import { NextApiRequest, NextApiResponse } from 'next/types'
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-export default function (_: NextApiRequest, res: NextApiResponse) {
+export default function (req: NextApiRequest, res: NextApiResponse) {
+  console.log('feed', req.query.limit)
   async function main() {
     const posts = await prisma.post.findMany({
       orderBy: [{ createdAt: 'desc' }],

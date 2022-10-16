@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import { MainNavigation } from '@Nav'
+import { MainNavigation } from '@/Nav'
 import { ProfileSideNav } from './profile/ProfileSideNav'
 import { StyledLayout, StyledWrapper } from './profile/styled'
 

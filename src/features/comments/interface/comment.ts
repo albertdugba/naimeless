@@ -1,4 +1,4 @@
-import { IUser } from '@features/user/api/interface'
+import { IUser } from '@/features/user/api/interface'
 import { BaseEntity } from 'src/types'
 
 export interface Comments extends BaseEntity {
