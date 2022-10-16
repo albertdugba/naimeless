@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { getLayout, MainLayout } from '@layout'
-import { Feed } from '@features/post/components'
+import { MainLayout } from '@/layout'
+import { Feed } from '@/features/post/components'
 
 const Home = () => {
   return (

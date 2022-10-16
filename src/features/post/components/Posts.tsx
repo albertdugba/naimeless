@@ -1,4 +1,4 @@
-import { GenericList } from '@List'
+import { GenericList } from '@/List'
 import { FC } from 'react'
 import { Post } from '../interface/post'
 import { SinglePost } from './Post'

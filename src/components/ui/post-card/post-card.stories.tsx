@@ -1,15 +1,19 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { PostCard } from './post.card'
+import { PostCard } from './post-card'
 
 export default {
   title: 'Components/Card',
   component: PostCard,
+  argTypes: {
+    controls: {
+      background: 'red',
+    },
+  },
 } as ComponentMeta<typeof PostCard>
 
 const Template: ComponentStory<typeof PostCard> = (args) => (
-  <PostCard {...args}>
-    <div>PostCard</div>
-  </PostCard>
+  <PostCard {...args} />
 )
 
-export const Card = Template.bind({})
+export const Default = Template.bind({})
+Default.args = {}

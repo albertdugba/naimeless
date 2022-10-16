@@ -1,4 +1,4 @@
-import { colors } from '@utils/colors'
+import { colors } from '@/utils/colors'
 import styled from 'styled-components'
 
 export const StyledWrapper = styled.section`

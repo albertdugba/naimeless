@@ -1,12 +1,12 @@
 import { formatDistance } from 'date-fns'
 import { ChangeEvent, FC, useState } from 'react'
-import * as Icons from '@icons/index'
+import * as Icons from '@/icons/index'
 import { Reply } from '../interface/comment'
-import { useAddCommentReply } from '@features/replies/api/addReply'
+import { useAddCommentReply } from '@/features/replies/api/addReply'
 import { motion, AnimatePresence } from 'framer-motion'
-import { IUser } from '@features/post/user/interface'
-import { Avatar } from '@ui/avatar'
-import { Button } from '@ui/button/button'
+import { IUser } from '@/features/post/user/interface'
+import { Avatar } from '@/ui/avatar'
+import { Button } from '@/ui/button/button'
 
 interface CommentProps {
   message: string

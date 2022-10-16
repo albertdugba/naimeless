@@ -1,4 +1,4 @@
-import { Button } from '@ui/button/button'
+import { Button } from '@/ui/button/button'
 import { StyledSidenav } from './styled'
 
 export const SideNav = () => {
@@ -12,9 +12,9 @@ export const SideNav = () => {
           {channels.map((ch, index) => (
             <li key={index} className="flex items-center justify-between my-4">
               <span className="capitalize">{ch}</span>
-              <button className="rounded-[3px] px-2 py-0 text-gray-500 capitalize">
-                <span className="text-sm">Join</span>
-              </button>
+              <Button variant="ghost" size="xs">
+                Join
+              </Button>
             </li>
           ))}
         </ul>

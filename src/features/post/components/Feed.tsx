@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 import Gravatar from 'react-gravatar'
-import { useGetAllPosts, useGetSinglePost } from '@features/post/api'
+import { useGetAllPosts, useGetSinglePost } from '@/features/post/api'
 import { Post } from '../interface/post'
-import { Modal } from '@Modal/modal'
+import { Modal } from '@/Modal/modal'
 import { StyledModal } from './style'
-import { getLayout } from '@layout'
+import { getLayout } from '@/layout'
 import { CreatePost } from './CreatePost'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Posts } from '.'
 import { useGetProfile } from '../user/api'
-import { Avatar } from '@ui/avatar'
+import { Avatar } from '@/ui/avatar'
 
 export const Feed = () => {
   const { user } = useGetProfile()

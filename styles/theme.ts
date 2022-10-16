@@ -95,7 +95,8 @@ const color = {
   buttonClearHover: baseColors.grey.light5,
   buttonPrimary: baseColors.purple.purple2,
   buttonPrimaryText: baseColors.grey.dark4,
-  buttonPrimaryHover: baseColors.bgOpacity, // recheck
+  buttonPrimaryHover: baseColors.bgOpacity,
+  borderColor: baseColors.grey.light4,
 }
 
 export const lightTheme: DefaultTheme = {

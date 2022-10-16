@@ -1,10 +1,12 @@
+import { forwardRef } from 'react'
+import { ComponentPropsWithoutRef } from 'react'
 import styled, { css } from 'styled-components'
 import { breakpoints } from '../../../../styles/breakpoints'
 
 const StyledButton = styled.button<{
   clear: boolean
   large: boolean
-  withIcon: boolean
+  withIcon?: boolean
   round: boolean
   size?: 'large' | 'medium' | 'small' | 'xs'
   variant?: 'ghost'
@@ -18,7 +20,7 @@ const StyledButton = styled.button<{
   }) => css`
     outline: none;
     border: 0;
-    font-family: 'Cera Pro Regular';
+    font-family: 'Cera Pro Medium';
     border-radius: ${round ? borderRadius.xl : borderRadius.xs};
     display: inline-flex;
     align-items: center;
@@ -71,7 +73,9 @@ const StyledButton = styled.button<{
   `
 )
 
-type DefaultProps = {
+type ButtonProps = DefaultProps & React.ComponentProps<typeof StyledButton>
+
+interface DefaultProps extends ComponentPropsWithoutRef<'button'> {
   clear?: boolean
   round?: boolean
   large?: boolean
@@ -84,21 +88,15 @@ type DefaultProps = {
   onClick?: () => void
 }
 
-type ButtonProps = DefaultProps & React.ComponentProps<typeof StyledButton>
-
-export const Button: React.FC<ButtonProps> = ({
-  children,
-  large = false,
-  clear = false,
-  round = false,
-  theme,
-  variant,
-  size,
-  ...props
-}) => {
-  console.log('theme', theme)
+export const Button: React.FC<ButtonProps> = forwardRef<
+  HTMLButtonElement,
+  DefaultProps
+>(({ round, size, name, clear, variant, large, children, ...props }, ref) => {
   return (
     <StyledButton
+      type="button"
+      ref={ref}
+      arial-label={name}
       variant={variant}
       size={size}
       clear={clear}
@@ -109,4 +107,14 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </StyledButton>
   )
-}
+})
+Button.displayName = 'Button'
+
+// children,
+// large = false,
+// clear = false,
+// round = false,
+// theme,
+// variant,
+// size,
+// ...props

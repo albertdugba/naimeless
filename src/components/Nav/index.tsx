@@ -2,12 +2,12 @@ import { useState } from 'react'
 // import { Button } from '../elements/Button'
 import { StyledHeader, StyledHeaderInner } from './styled'
 import Image from 'next/image'
-import { useGetProfile } from '@features/post/user/api'
-import { Dropdown } from '@Dropdown/Dropdown'
-import * as Icons from '@icons/index'
-import { Avatar } from '@ui/avatar'
-import { Modal } from '@ui/modal/modal'
-import { Button } from '@ui/button/button'
+import { useGetProfile } from '@/features/post/user/api'
+import { Dropdown } from '@/Dropdown/Dropdown'
+import * as Icons from '@/icons/index'
+import { Avatar } from '@/ui/avatar'
+import { Modal } from '@/ui/modal/modal'
+import { Button } from '@/ui/button/button'
 
 export const MainNavigation = () => {
   const [openModal, setOpenModal] = useState(false)

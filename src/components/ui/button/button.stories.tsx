@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { Button } from './button'
-import * as Icons from '../../../../public/icons/index'
 
 export default {
   title: 'Components/Button',
@@ -30,4 +29,5 @@ export const VerySmallButton = Template.bind({})
 VerySmallButton.args = {
   size: 'xs',
   children: 'Very Small Button',
+
 }

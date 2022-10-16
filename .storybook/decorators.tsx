@@ -7,7 +7,7 @@ import { GlobalStyle } from '../styles/GlobalStyle'
 const withTheme: DecoratorFn = (StoryFn, context) => {
   return (
     <ThemeProvider theme={lightTheme}>
-      <div style={{ fontFamily: 'Cera Pro Regular' }}>
+      <div>
         <GlobalStyle />
         <StoryFn />
       </div>

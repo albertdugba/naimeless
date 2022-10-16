@@ -1,13 +1,13 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react'
 import Gravartar from 'react-gravatar'
-import { DownArrow, People } from '@icons/index'
+import { DownArrow, People } from '@/icons/index'
 import { StyledModal } from './style'
-import { Modal } from '@Modal/modal'
+import { Modal } from '@/Modal/modal'
 import { useCreatePost } from '../api'
-import * as Icons from '@icons/index'
+import * as Icons from '@/icons/index'
 import { AnimatePresence } from 'framer-motion'
-import { Avatar } from '@ui/avatar'
-import { Button } from '@ui/button/button'
+import { Avatar } from '@/ui/avatar'
+import { Button } from '@/ui/button/button'
 
 interface CreatePostProps {
   setOpenModal: (val: boolean) => void
