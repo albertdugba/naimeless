@@ -34,9 +34,20 @@ const baseColors = {
     dark5: '#2C2C2C',
     dark6: '#202020',
   },
+  blue: {
+    blue1: ' rgba(37, 150, 190, 0.3)',
+    blue2: 'rgba(37, 150, 190,0.6)',
+  },
   purple: {
-    purple1: '#d7caf0',
-    purple2: '#7453B2',
+    purple1: '#eddff2',
+    purple2: '#d5c9da',
+    purple3: '#dbbbe6',
+    purple4: '#cfa5de',
+    purple5: '#9971a9',
+    purple6: '#7453B2',
+    purple7: '#7453B2',
+    purple8: '#7453B2',
+    purple9: '#7453B2',
   },
 }
 
@@ -93,10 +104,22 @@ const color = {
   badgeText: baseColors.grey.dark2,
   buttonClear: 'transparent',
   buttonClearHover: baseColors.grey.light5,
-  buttonPrimary: baseColors.purple.purple2,
+  buttonPrimary: baseColors.purple.purple9,
   buttonPrimaryText: baseColors.grey.dark4,
   buttonPrimaryHover: baseColors.bgOpacity,
   borderColor: baseColors.grey.light4,
+  // grey
+  chipColorGrey1: baseColors.grey.light3,
+  chipColorGrey2: baseColors.grey.light4,
+  chipColorGrey3: baseColors.grey.light4,
+  chipColorPurple1: baseColors.purple.purple1,
+
+  // purple
+  chipBgColorPurp1: baseColors.purple.purple1,
+  chipBgColorPurp2: baseColors.purple.purple2,
+  chipBgColorPurp3: baseColors.purple.purple3,
+  chipBgColorPurp4: baseColors.purple.purple4,
+  chipBgColorPurp5: baseColors.purple.purple5,
 }
 
 export const lightTheme: DefaultTheme = {

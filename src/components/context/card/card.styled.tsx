@@ -10,6 +10,7 @@ export const CardContainer = styled.div(
       background: white;
       border-radius: 8px;
       padding: 20px;
+      width: 100%;
     }
   `
 )

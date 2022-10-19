@@ -49,5 +49,4 @@ const Layout = styled.div`
   min-height: 100%;
   width: 100%;
   margin-top: 10px;
-  /* border: 1px solid black; */
 `

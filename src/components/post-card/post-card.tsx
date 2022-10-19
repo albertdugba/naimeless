@@ -19,7 +19,6 @@ export const PostCard: FC<CardProps> = ({
   toggleCard,
   setToggleCard,
 }) => {
-  // console.log('channel', post.channelName)
   return (
     <Card toggleCard={toggleCard} setToggleCard={setToggleCard}>
       <div className="w-full">

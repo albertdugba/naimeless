@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 export type ChipProps = {
-  label: 'Chat'
+  label: string
 }
 export const StyledChip = styled.span<ChipProps>(
   ({ label, theme: { color, borderRadius } }) => css`
@@ -9,16 +9,26 @@ export const StyledChip = styled.span<ChipProps>(
     align-items: center;
     justify-content: center;
     font-size: 13px;
-    color: ${label === 'Chat' ? color.badgeText : ''};
+    color: ${label === 'Chat'
+      ? color.chipBgColorPurp5
+      : label === 'Main'
+      ? color.chipColorGrey1
+      : ''};
     border-radius: ${borderRadius.xxl};
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 6px;
-    padding-right: 6px;
-    background-color: ${label === 'Chat' ? color.badgeBackground : ''};
+    padding: 2px 6px;
+    width: fit-content;
+    background-color: ${label === 'Chat'
+      ? color.chipBgColorPurp3
+      : label === 'Main'
+      ? color.chipColorGrey3
+      : ''};
   `
 )
 
 export const Chip = ({ label }: ChipProps) => {
-  return <StyledChip label={label}>@{label}</StyledChip>
+  return (
+    <StyledChip arial-aria-label={`${label} label`} label={label}>
+      @{label}
+    </StyledChip>
+  )
 }
