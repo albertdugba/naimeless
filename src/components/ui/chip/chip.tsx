@@ -1,20 +1,24 @@
 import styled, { css } from 'styled-components'
 
 export type ChipProps = {
-  channelName: string
+  label: 'Chat'
 }
 export const StyledChip = styled.span<ChipProps>(
-  ({ theme: { color }, channelName }) => css`
+  ({ label, theme: { color, borderRadius } }) => css`
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 13px;
-    color: red;
-    border-radius: 50%;
-    padding-top: 6px 2px;
-    background-color: ${color.buttonPrimary};
+    color: ${label === 'Chat' ? color.badgeText : ''};
+    border-radius: ${borderRadius.xxl};
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    background-color: ${label === 'Chat' ? color.badgeBackground : ''};
   `
 )
 
-export const Chip = ({ channelName }: ChipProps) => {
-  return <StyledChip channelName={channelName} />
+export const Chip = ({ label }: ChipProps) => {
+  return <StyledChip label={label}>@{label}</StyledChip>
 }

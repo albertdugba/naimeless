@@ -12,12 +12,14 @@ import {
   CardFooterActionsContainer,
   CardHeaderContainer,
 } from './post-card.styled'
+import { Chip } from '@/ui/chip'
 
 export const PostCard: FC<CardProps> = ({
   post,
   toggleCard,
   setToggleCard,
 }) => {
+  // console.log('channel', post.channelName)
   return (
     <Card toggleCard={toggleCard} setToggleCard={setToggleCard}>
       <div className="w-full">
@@ -27,17 +29,7 @@ export const PostCard: FC<CardProps> = ({
               <CardHeaderContainer>
                 <div className="flex items-center gap-2">
                   <div className="p-0">
-                    <span
-                      className={`flex items-center justify-center text-[13px] ${
-                        post.channelName === 'Religion'
-                          ? 'text-blue-400 bg-blue-200'
-                          : post.channelName === 'Chat'
-                          ? 'text-gray-400 bg-gray-100'
-                          : ''
-                      } rounded-full px-[6px] py-[2px]`}
-                    >
-                      {`@${post.channelName?.toLocaleLowerCase()}`}
-                    </span>
+                    <Chip label={post.channelName} />
                   </div>
                   <span className="text-[12px] text-gray-400 inline-block whitespace-nowrap">
                     {formatDistance(new Date(post.createdAt), new Date(), {

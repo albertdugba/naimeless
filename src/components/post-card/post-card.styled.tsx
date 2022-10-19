@@ -27,6 +27,5 @@ export const CardDate = styled.div<{
 }>(
   ({ color }) => css`
     display: flex;
-    
   `
 )

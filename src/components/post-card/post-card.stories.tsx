@@ -3,7 +3,7 @@ import { PostCard } from './post-card'
 import POST from 'mocks/post.json'
 
 export default {
-  title: 'Components/Card',
+  title: 'Components/PostCard',
   component: PostCard,
   args: {
     post: POST[0],
