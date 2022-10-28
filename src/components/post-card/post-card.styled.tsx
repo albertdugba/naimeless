@@ -21,3 +21,11 @@ export const CardFooterActionsContainer = styled.div`
   margin-top: 6px;
   align-items: center;
 `
+
+export const CardDate = styled.div<{
+  channelName: 'Religion' | 'Chat' | 'Food'
+}>(
+  ({ color }) => css`
+    display: flex;
+  `
+)

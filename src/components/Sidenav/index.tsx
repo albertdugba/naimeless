@@ -6,13 +6,13 @@ export const SideNav = () => {
 
   return (
     <StyledSidenav>
-      <div className="bg rounded-[8px] mt-8 p-6 w-full border  bg-white ">
+      <div className="bg rounded-[8px] mt-9 p-6 w-full border  bg-white ">
         <h1 className="font-bold">Top Channels</h1>
         <ul className="mt-3 bg">
           {channels.map((ch, index) => (
             <li key={index} className="flex items-center justify-between my-4">
               <span className="capitalize">{ch}</span>
-              <Button variant="ghost" size="xs">
+              <Button variant="ghost" size="xs" round>
                 Join
               </Button>
             </li>

@@ -1,0 +1,42 @@
+[
+  {
+    "id": 3,
+    "message": "Heyy Baba is here",
+    "published": true,
+    "createdAt": "2022-10-07T20:53:38.289Z",
+    "updatedAt": "2022-10-07T20:53:38.291Z",
+    "author": "nbvbn",
+    "channelName": "Chat",
+    "userId": null,
+    "vote": [],
+    "comments": [
+      {
+        "id": 2,
+        "message": "Hello welcome",
+        "createdAt": "2022-10-07T20:57:09.183Z",
+        "updatedAt": "2022-10-07T20:57:09.183Z",
+        "postId": 3,
+        "commentId": null,
+        "userId": 1,
+        "replies": [
+          {
+            "id": 2,
+            "createdAt": "2022-10-07T20:57:34.611Z",
+            "updatedAt": "2022-10-07T20:57:34.611Z",
+            "body": "Yes from Kwabs",
+            "commentId": 2,
+            "userId": null
+          }
+        ],
+        "user": {
+          "id": 1,
+          "email": "albert@test.com",
+          "password": "$2b$10$gfUgTV4h3JZJFF6goZvdjOW9Hg8hrfbFMKAv0F52mn8ZsdXCKHbTa",
+          "avatarColor": "pink",
+          "createdAt": "2022-09-16T21:44:48.962Z",
+          "updatedAt": "2022-09-16T21:44:48.963Z"
+        }
+      }
+    ]
+  }
+]

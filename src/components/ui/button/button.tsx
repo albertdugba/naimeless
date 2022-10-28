@@ -46,6 +46,7 @@ const StyledButton = styled.button<{
       background-color: ${clear
         ? color.buttonClearHover
         : color.buttonPrimaryHover};
+      opacity: 0.85;
     }
 
     &:focus {

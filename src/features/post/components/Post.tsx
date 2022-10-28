@@ -12,7 +12,7 @@ export const SinglePost: FC<PostProps> = ({ post }) => {
 
   return (
     <div>
-      <div className="my-2">
+      <div className="my-2 px-[12.5px] py-1">
         <PostCard
           post={post}
           toggleCard={toggleCommentBox}

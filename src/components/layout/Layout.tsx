@@ -30,7 +30,6 @@ const StyledLayout = styled.section`
     'aside main main'
     'aside main main';
   width: 100%;
-  padding: 0.35rem;
 
   @media (min-width: 701px) {
     grid-template-columns: 20rem;
@@ -50,5 +49,4 @@ const Layout = styled.div`
   min-height: 100%;
   width: 100%;
   margin-top: 10px;
-  /* border: 1px solid black; */
 `
